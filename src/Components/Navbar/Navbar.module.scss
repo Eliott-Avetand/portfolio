@@ -1,0 +1,45 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    padding: 20px 200px;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+    .menu {
+        a {
+            position: relative;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            font-size: 18px;
+            margin: 0 30px;
+            padding-bottom: 5px;
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                height: 2px;
+                transition: all .4s;
+                width: 0;
+                right: 0;
+                background: #6CE6BD;
+            }
+            &:hover {
+                text-shadow: 0 0 10px #fff;
+                &::after {
+                    width: 100%;
+                    right: auto;
+                    left: 0;
+                }
+            }
+            &.active {
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
