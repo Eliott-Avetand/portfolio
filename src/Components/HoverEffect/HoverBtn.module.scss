@@ -1,0 +1,45 @@
+@import "../../Theme/theme";
+
+.hoverBtn {
+    position: relative;
+    z-index: 1;
+    &::before {
+        content: '';
+        position: absolute;
+        transition: all .2s;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        transition: all .2s;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        z-index: -1;
+        @include themed {
+            background: t("text2");
+        }
+    }
+    &:hover {
+        @include themed {
+            color: t("text1") !important;
+        }
+        &::after {
+            width: 100%;
+            box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, .25);
+        }
+        &::before {
+            top: -.2em;
+            bottom: -.2em;
+            @include themed {
+                border: solid t("text2");
+                border-width: .1em 0;
+            } 
+        }
+    }
+}

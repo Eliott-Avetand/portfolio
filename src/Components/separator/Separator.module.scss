@@ -1,0 +1,22 @@
+@import "../../Theme/theme";
+
+.separator {
+    height: 100%;
+    display: flex;
+    margin-right: 50px;
+    .left {
+        display: block;
+        width: 1em;
+        margin-right: .3em;
+        @include themed {
+            background: t("text1");
+        }
+    }
+    .right {
+        display: block;
+        width: .3em;
+        @include themed {
+            background: t("text1");
+        }
+    }
+}
