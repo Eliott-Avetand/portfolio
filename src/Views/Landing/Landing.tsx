@@ -1,6 +1,16 @@
+import { Dispatch, SetStateAction } from 'react';
 import styles from './Landing.module.scss';
 
-const Landing = () => {
+interface props {
+    setHasInteracted: Dispatch<SetStateAction<boolean>>;
+}
+
+const Landing = ({ setHasInteracted }: props) => {
+    addEventListener('click', () => {
+        console.log("azeaze");
+        setHasInteracted(true);
+    });
+
     return (
         <div className={styles.landing}>
             <div className={styles.wallpaper}></div>
