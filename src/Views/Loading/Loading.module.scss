@@ -1,0 +1,36 @@
+@import "../../Theme/theme";
+
+.loading {
+    background-image: url("../../assets/Img/loading_wallpaper.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 50px;
+    overflow: hidden;
+    @include themed {
+        color: t('text1');
+    }
+    .title {
+        text-transform: uppercase;
+        h1 {
+            font-weight: 300;
+            font-size: 4em;
+            display: inline;
+        }
+        i {
+            font-size: 1.5em;
+            font-style: normal;
+            & > div {
+                display: inline;
+            }
+        }
+    }
+    .content {
+        margin-left: 50px;
+        font-size: 1.5em;
+        width: fit-content;
+    }
+}

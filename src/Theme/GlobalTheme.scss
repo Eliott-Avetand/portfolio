@@ -1,0 +1,7 @@
+.theme--dark {
+    color: map-get(map-get($themes, "dark"), "primary");
+}
+
+.theme--light {
+    color: map-get(map-get($themes, "light"), "primary");
+}

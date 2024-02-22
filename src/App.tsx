@@ -1,8 +1,12 @@
+import { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { customRoutes } from './Routes';
+import ThemeContext from './Theme/ThemeContext.tsx';
 import Navbar from './Components/Navbar/Navbar';
 
 function App() {
+    const { isDark } = useContext(ThemeContext);
+
     const routes = customRoutes.map((route, index) => {
         const Component = route.component;
 
@@ -16,7 +20,7 @@ function App() {
     });
 
     return (
-        <div>
+        <div className={isDark ? 'theme--dark': 'theme--light'}>
             <Navbar />
             <Routes>
                 {routes}
