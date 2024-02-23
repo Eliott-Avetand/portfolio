@@ -1,17 +1,19 @@
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import styles from './Landing.module.scss';
+import { useSoundManager } from '../../Components/Sounds/SoundManager';
 
 interface props {
     setHasInteracted: Dispatch<SetStateAction<boolean>>;
 }
 
 const Landing = ({ setHasInteracted }: props) => {
+    const { playSound } = useSoundManager();
+
     const interacted = () => {
         document.querySelector("#fade")?.classList.remove(styles.fadein);
         document.querySelector("#fade")?.classList.add(styles.fadeout);
-        setTimeout(() => {
-            setHasInteracted(true);
-        }, 2000);
+        playSound("openMenu");
+        setTimeout(() => { setHasInteracted(true); }, 2000);
     }
 
     useEffect(() => {

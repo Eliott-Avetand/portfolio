@@ -6,6 +6,7 @@ import Navbar from './Components/Navbar/Navbar';
 import styles from './App.module.scss';
 import Landing from './Views/Landing/Landing.tsx';
 import Loading from './Views/Loading/Loading.tsx';
+import SoundManager from './Components/Sounds/SoundManager.tsx';
 
 function App() {
     const location = useLocation();
@@ -42,10 +43,9 @@ function App() {
             navigate('/home');
     }, [hasInteracted])
     
-
+ 
     return (
         <div className={`${styles.app} ${isDark ? 'theme--dark' : 'theme--light'} ${!isInMainMenu() ? styles.inApp : ""}`}>
-            <audio src="" id="soundElement" />
             {
                 !visited
                 ? <Loading setVisited={setVisited} />
