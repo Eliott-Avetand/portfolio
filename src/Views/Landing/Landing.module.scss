@@ -51,7 +51,6 @@
             font-size: 1.5em;
             color: #D2CDB4;
             text-shadow: 4px 4px 1px #9D9989;
-            letter-spacing: .1em;
             padding: 0 20px;
             animation: breathing-bar 4s infinite alternate ease-in-out;
             &::after {
@@ -67,7 +66,6 @@
         i {
             color: #D2CDB4;
             font-style: normal;
-            letter-spacing: .1em;
             font-weight: 500;
         }
     }

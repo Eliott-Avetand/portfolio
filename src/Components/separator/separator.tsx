@@ -1,10 +1,14 @@
 import styles from './Separator.module.scss';
 
-const Separator = () => {
+interface separatorProps {
+    inversed?: boolean
+}
+
+const Separator = ({ inversed }: separatorProps) => {
     return (
         <div className={styles.separator}>
-            <span className={styles.left}></span>
-            <span className={styles.right}></span>
+            <span className={`${inversed ? styles.inversed : ""} ${styles.left}`}></span>
+            <span className={`${inversed ? styles.inversed : ""} ${styles.right}`}></span>
         </div>
     );
 }

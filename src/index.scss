@@ -3,6 +3,7 @@
     line-height: 1.5;
     font-weight: 400;
     font-size: 16px;
+    letter-spacing: .1em;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -13,6 +14,7 @@
 *, body {
     margin: 0;
     padding: 0;
+    letter-spacing: .1em;
 }
 
 @media (prefers-reduced-motion: reduce) {

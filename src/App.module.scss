@@ -1,6 +1,8 @@
 .app {
     width: 100%;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .inApp {
@@ -10,5 +12,5 @@
     background-size: 100% 100%;
     box-sizing: border-box;
     overflow: hidden;
-    padding: 0 50px;
+    padding: 0 50px 100px;
 }

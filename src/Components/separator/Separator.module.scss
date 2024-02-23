@@ -1,7 +1,6 @@
 @import "../../Theme/theme";
 
 .separator {
-    height: 100%;
     display: flex;
     margin-right: 50px;
     .left {
@@ -10,6 +9,9 @@
         margin-right: .3em;
         @include themed {
             background: t("text1");
+            &.inversed {
+                background: t("text2");
+            }
         }
     }
     .right {
@@ -17,6 +19,9 @@
         width: .3em;
         @include themed {
             background: t("text1");
+            &.inversed {
+                background: t("text2");
+            }
         }
     }
 }

@@ -16,6 +16,17 @@
                 background: t("text1");
             }
         }
+        .cursor {
+            display: block;
+        }
+    }
+    .cursor {
+        user-select: none;
+        transform: rotate(90deg);
+        position: absolute;
+        height: 40px;
+        left: -50px;
+        display: none;
     }
     .indicator {
         width: 15px;
@@ -29,6 +40,5 @@
     p {
         font-size: 1em;
         user-select: none;
-        letter-spacing: .1em;
     }
 }

@@ -1,0 +1,50 @@
+@import "../../Theme/theme";
+
+.footer {
+    position: relative;
+    width: 100%;
+    background: #D2CDB4;
+    box-shadow: 4px 4px 2px 0 #9D9989;
+    display: flex;
+    box-sizing: border-box;
+    .content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    p {
+        padding: 20px 0;
+    }
+    .keys {
+        display: flex;
+        .key {
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+            @include themed {
+                color: t("text2");
+            }
+            .input {
+                user-select: none;
+                text-align: center;
+                padding: 2px 5px;
+                margin-right: 5px;
+                @include themed {
+                    color: t("text1");
+                    background: t("text2");
+                }
+            }
+        }
+    }
+    .indicator {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        bottom: 5px;
+        right: 5px;
+        z-index: 1;
+        @include themed {
+            background: t("text2");
+        }
+    }
+}
