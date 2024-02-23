@@ -71,8 +71,38 @@
             font-weight: 500;
         }
     }
+    .fadeout {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        animation: fadeout 2s forwards;
+        background: #BAB5A1;
+        z-index: 1;
+    }
+    .fadein {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 1;
+        animation: fadein 2s forwards;
+        background: #282520;
+        z-index: 1;
+    }
 }
 
 @keyframes breathing-bar {
     to { padding: 0; }
+}
+
+@keyframes fadein {
+    to { opacity: 0; }
+}
+
+@keyframes fadeout {
+    to { opacity: 1; }
 }

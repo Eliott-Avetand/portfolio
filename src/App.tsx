@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { customRoutes } from './Routes';
 import ThemeContext from './Theme/ThemeContext.tsx';
 import Navbar from './Components/Navbar/Navbar';
@@ -8,9 +8,15 @@ import Landing from './Views/Landing/Landing.tsx';
 import Loading from './Views/Loading/Loading.tsx';
 
 function App() {
+    const location = useLocation();
+    const navigate = useNavigate();
     const { isDark } = useContext(ThemeContext);
-    const [hasInteracted, setHasInteracted] = useState<boolean>(false);
-    const firstVisit = localStorage.getItem('visited') == null;
+    const [visited, setVisited] = useState(localStorage.getItem('visited') !== null)
+    const [hasInteracted, setHasInteracted] = useState<boolean>(false)
+
+    const isInMainMenu = () => {
+        return location.pathname === '/' || !hasInteracted;
+    }
 
     const routes = customRoutes.map((route, index) => {
         const Component = route.component;
@@ -24,19 +30,33 @@ function App() {
         )
     });
 
+    useEffect(() => {
+        if (!visited)
+            navigate('/');
+    }, [visited, navigate])
+
+    useEffect(() => {
+        if (!hasInteracted)
+            navigate('/');
+        else
+            navigate('/home');
+    }, [hasInteracted])
+    
+
     return (
-        <div className={`${styles.app} ${isDark ? 'theme--dark' : 'theme--light'} ${hasInteracted ? styles.inApp : ""}`}>
+        <div className={`${styles.app} ${isDark ? 'theme--dark' : 'theme--light'} ${!isInMainMenu() ? styles.inApp : ""}`}>
             <audio src="" id="soundElement" />
             {
-                firstVisit
-                ? <Loading />
-                : hasInteracted
-                    ? <>
+                !visited
+                ? <Loading setVisited={setVisited} />
+                : isInMainMenu()
+                    ? <Landing setHasInteracted={setHasInteracted} />
+                    : <>
                         <Navbar />
                         <Routes>
                             {routes}
-                        </Routes> </>
-                    : <Landing setHasInteracted={setHasInteracted} />
+                        </Routes>
+                    </>
             }
         </div>
     );

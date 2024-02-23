@@ -1,9 +1,13 @@
-import { ReactElement, createElement, useEffect, useState } from 'react';
+import { Dispatch, ReactElement, SetStateAction, createElement, useEffect, useState } from 'react';
 import styles from './Loading.module.scss';
 import text from "./texts.json";
 import Typewriter from 'typewriter-effect';
 
-const Loading = () => {
+interface props {
+    setVisited: Dispatch<SetStateAction<boolean>>;
+}
+
+const Loading = ({ setVisited }: props) => {
     const [arrayTypeWriter, setArrayTypeWriter] = useState<ReactElement[]>([]);
     const [numberOfElement, setNumberOfElement] = useState(0);
 
@@ -11,8 +15,10 @@ const Loading = () => {
         if (numberOfElement == text.length) {
             document.querySelector(`#fadeout`)?.classList.add(styles.fadeout)
             localStorage.setItem('visited', 'true');
+            localStorage.setItem('firstVisit', 'true');
+            setTimeout(() => setVisited(true), 2000);
         }
-    }, [numberOfElement]);
+    }, [numberOfElement, setVisited]);
 
     return (
         <div className={styles.loading}>
