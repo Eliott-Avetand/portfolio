@@ -25,7 +25,7 @@
             background: t("text2");
         }
     }
-    &:hover {
+    &:hover, &.selected {
         @include themed {
             color: t("text1") !important;
         }

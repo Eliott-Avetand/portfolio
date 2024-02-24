@@ -6,7 +6,6 @@ import Navbar from './Components/Navbar/Navbar';
 import styles from './App.module.scss';
 import Landing from './Views/Landing/Landing.tsx';
 import Loading from './Views/Loading/Loading.tsx';
-import Footer from './Components/Footer/Footer.tsx';
 
 function App() {
     const location = useLocation();
@@ -17,6 +16,11 @@ function App() {
 
     const isInMainMenu = () => {
         return location.pathname === '/' || !hasInteracted;
+    }
+
+    const handleKeys = (event: KeyboardEvent) => {
+        console.log(event);
+        
     }
 
     const routes = customRoutes.map((route, index) => {
@@ -45,7 +49,7 @@ function App() {
     
  
     return (
-        <div className={`${styles.app} ${isDark ? 'theme--dark' : 'theme--light'} ${!isInMainMenu() ? styles.inApp : ""}`}>
+        <div className={`${styles.app} ${isDark ? 'theme--dark' : 'theme--light'} ${!isInMainMenu() ? styles.inApp : ""}`} onKeyDown={handleKeys}>
             {
                 !visited
                 ? <Loading setVisited={setVisited} />
@@ -56,7 +60,6 @@ function App() {
                         <Routes>
                             {routes}
                         </Routes>
-                        <Footer text='azeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee' keys={["Echap", "Entrée"]} />
                     </>
             }
         </div>

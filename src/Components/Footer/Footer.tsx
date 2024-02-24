@@ -22,8 +22,8 @@ const Footer = ({ text, keys }: footerProps) => {
             <div className={styles.content}>
                 <p>{text}</p>
                 <div className={styles.keys}>
-                    {keys.map(key => (
-                        <div className={styles.key}>
+                    {keys.map((key, index) => (
+                        <div key={index} className={styles.key}>
                             <div className={styles.input}>{key}</div>
                             <div className={styles.description}>{keysAvailable[key]}</div>
                         </div>
