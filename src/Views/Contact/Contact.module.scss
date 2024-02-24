@@ -5,7 +5,7 @@
     height: 100vh;
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     @include themed {
         color: t('text1');
     }
@@ -17,9 +17,6 @@
             color: t('text2');
         }
         text-shadow: 5px 7px 0 #9D9989;
-    }
-    .content {
-        display: flex;
     }
     .main {
         width: 30%;

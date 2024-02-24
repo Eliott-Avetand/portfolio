@@ -10,7 +10,7 @@
     align-items: center;
     cursor: pointer;
     margin-top: 10px;
-    &:hover {
+    &:hover, &.selectedBtn {
         .indicator {
             @include themed {
                 background: t("text1");

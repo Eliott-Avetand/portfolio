@@ -1,32 +1,15 @@
 @import "../../Theme/theme";
 
 .home {
-    width: 100%;
-    height: 100vh;
-    margin-top: 20px;
+    flex-grow: 1;
     display: flex;
-    flex-direction: column;
-    @include themed {
-        color: t('text1');
-    }
-    h1 {
-        font-size: 3em;
-        font-weight: 400;
-        margin-bottom: 20px;
-        @include themed {
-            color: t('text2');
-        }
-        text-shadow: 5px 7px 0 #9D9989;
-    }
-    .content {
-        display: flex;
-    }
+    justify-content: space-between;
+    margin-bottom: 20px;
     .main {
         width: 40%;
         display: flex;
-        position: relative;
         height: fit-content;
-        .text {
+        .content {
             & > p {
                 text-align: justify;
                 margin-bottom: 20px;

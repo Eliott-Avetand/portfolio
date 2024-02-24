@@ -1,35 +1,32 @@
-import Separator from '../../Components/Separator/separator';
 import styles from './System.module.scss';
-import Footer from '../../Components/Footer/Footer';
+import Separator from '../../Components/Separator/separator';
 import Button from '../../Components/Button/Button';
-import { useEffect, useState } from 'react';
-import SystemInfo from '../../Components/BoxInfos/SystemInfo/SystemInfo';
+import Scrollable from '../../Components/BoxInfos/Scrollable/Scrollable';
+import { pageProps } from '../../Interfaces/PagesProps.interface';
+import { useLanguage } from '../../Contexts/useContext';
 
-const System = () => {
-    const systemFooter = "Informations techniques du site et attributions.";
-    const [footerText, setFooterText] = useState<string>(systemFooter);
+interface systemProps extends pageProps {}
 
-    useEffect(() => {
-        if (footerText === "")
-            setFooterText(systemFooter);
-    }, [footerText, setFooterText])
-    
+const System = ({ setFooterText }: systemProps) => {
+    const { dictionary, userLanguage, userLanguageChange } = useLanguage();
 
     return (
         <div className={styles.system}>
-            <h1>SYSTÈME</h1>
-            <div className={styles.content}>
-                <div className={styles.main}>
-                    <Separator />
-                    <div className={styles.menu}>
-                        <Button btnName='Mentions légales' btnDescription="Mentions légales et obligatoires du site." setFooterText={setFooterText} />
-                        <Button btnName='NieR:Automata' btnDescription="Place de NieR:Automata." setFooterText={setFooterText} />
-                        <Button btnName='Attributions' btnDescription="Attributions aux différentes images et références." setFooterText={setFooterText} />
-                    </div>
+            <div className={styles.menu}>
+                <Separator />
+                <div className={styles.items}>
+                    {dictionary["system"].buttons.map((button, index) => (
+                        <Button
+                            callback={() => userLanguageChange(userLanguage === "fr" ? "en" : "fr")}
+                            key={index}
+                            btnName={button.title}
+                            btnDescription={button.description}
+                            setFooterText={setFooterText}
+                        />
+                    ))}
                 </div>
-                <SystemInfo />
             </div>
-            <Footer text={footerText} keys={["Echap", "Entrée"]} />
+            <Scrollable title="Mentions légales" />
         </div>
     );
 }

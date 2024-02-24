@@ -1,35 +1,36 @@
-import { useEffect, useState } from 'react';
+import { pageProps } from '../../Interfaces/PagesProps.interface';
 import MainInfo from '../../Components/BoxInfos/MainInfos/MainInfo';
 import Button from '../../Components/Button/Button';
 import Separator from '../../Components/Separator/separator';
 import styles from './Home.module.scss';
-import Footer from '../../Components/Footer/Footer';
+import { useLanguage } from '../../Contexts/useContext';
 
-const Home = () => {
-    const homeDescription = "Page d'accueil du portfolio.";
-    const [footerText, setFooterText] = useState<string>(homeDescription);
+interface homeProps extends pageProps {}
 
-    useEffect(() => {
-        if (footerText === "")
-            setFooterText(homeDescription);
-    }, [footerText, setFooterText])
-    
+const Home = ({ setFooterText }: homeProps) => {
+    const { dictionary } = useLanguage();
 
     return (
         <div className={styles.home}>
-            <h1>ACCUEIL</h1>
-            <div className={styles.content}>
-                <div className={styles.main}>
-                    <Separator />
-                    <div className={styles.text}>
-                        <p>Salut ! Je m'appelle Eliott Avetand, je suis un développeur créatif passioné par le design.J'interviens en tant que développeur web full stack mais j'ai quelques années d'expériences dans une multitude de language comme le C / C++, Python, Unreal, etc, qui me permettent de travailler dans tous les domaines, je m'adapte !</p>
-                        <Button btnName='Informations' btnDescription='Consulte les informations légales du site.' setFooterText={setFooterText} />
-                        <Button btnName='Tous les projets' btnDescription='Consulte la liste des projets importants réalisés.' setFooterText={setFooterText} />
-                    </div>
+            <div className={styles.main}>
+                <Separator />
+                <div className={styles.content}>
+                    <p>{dictionary["home"].texts[0]}</p>
+                    <Button
+                        btnName={dictionary["home"].buttons[0].title}
+                        btnDescription={dictionary["home"].buttons[0].description}
+                        setFooterText={setFooterText}
+                        callback={() => {}}
+                    />
+                    <Button
+                        btnName={dictionary["home"].buttons[1].title}
+                        btnDescription={dictionary["home"].buttons[1].description}
+                        setFooterText={setFooterText}
+                        callback={() => {}}
+                    />
                 </div>
-                <MainInfo />
             </div>
-            <Footer text={footerText} keys={["Echap", "Entrée"]} />
+            <MainInfo />
         </div>
     );
 }

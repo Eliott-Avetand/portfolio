@@ -1,0 +1,66 @@
+{
+    "home": {
+        "title": "Home",
+        "description": "Portfolio home page.",
+        "texts": [
+            "Hi! My name is Eliott Avetand, I'm a creative developer passionate about design. I work as a full stack web developer but I have years of experience in a variety of languages like C/C++, Python, Unreal, etc., allowing me to work in any field, I adapt!"
+        ],
+        "buttons": [{
+            "title": "Information",
+            "description": "View legal information about the site."
+        }, {
+            "title": "All projects",
+            "description": "View the list of important projects completed."
+        }]
+    },
+    "projects": {
+        "title": "Projects",
+        "description": "All important projects completed.",
+        "texts": [],
+        "buttons": [{
+            "title": "Video Games",
+            "description": "All my projects in video game development."
+        }, {
+            "title": "Web",
+            "description": "All my website creation projects."
+        }, {
+            "title": "C/C++",
+            "description": "My algorithms and programs in C/C++."
+        }]
+    },
+    "contact": {
+        "title": "Contact",
+        "description": "Contact me for any inquiries.",
+        "texts": [
+            "Name",
+            "Email",
+            "Subject",
+            "Message"
+        ],
+        "buttons": [{
+            "title": "Contact",
+            "description": "Send me your inquiries."
+        }]
+    },
+    "system": {
+        "title": "System",
+        "description": "System settings and important notices.",
+        "texts": [],
+        "buttons": [{
+            "title": "Language",
+            "description": "Change the site language."
+        }, {
+            "title": "Mode",
+            "description": "Toggle site dark/light mode."
+        }, {
+            "title": "Attributions",
+            "description": "Attributions for various site images and references."
+        }, {
+            "title": "NieR:Automata",
+            "description": "My inspiration from Nier."
+        }, {
+            "title": "Legal Mentions",
+            "description": "Legal and mandatory notices of the site."
+        }]
+    }
+}

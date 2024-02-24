@@ -38,28 +38,4 @@
             }
         }
     }
-    .options {
-        margin-left: auto;
-        font-size: 1.5em;
-        @include themed {
-            color: t("text2");
-        }
-        span {
-            cursor: pointer;
-            margin: 0 20px;
-            position: relative;
-            &.off {
-                &::after {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: -50%;
-                    right: 0;
-                    transform: rotate(-45deg);
-                    transform-origin: 100% 0;
-                    border-top: 2px solid red;
-                }
-            }
-        }
-    }
 }

@@ -1,0 +1,66 @@
+{
+    "home": {
+        "title": "Accueil",
+        "description": "Page d'accueil du portfolio.",
+        "texts": [
+            "Salut ! Je m'appelle Eliott Avetand, je suis un développeur créatif passioné par le design.J'interviens en tant que développeur web full stack mais j'ai quelques années d'expériences dans une multitude de language comme le C / C++, Python, Unreal, etc, qui me permettent de travailler dans tous les domaines, je m'adapte !"
+        ],
+        "buttons": [{
+            "title": "Informations",
+            "description": "Consulter les informations légales du site."
+        }, {
+            "title": "Tous les projets",
+            "description": "Consulter la liste des projets importants réalisés."
+        }]
+    },
+    "projects": {
+        "title": "Projets",
+        "description": "Tous les projets importants réalisés.",
+        "texts": [],
+        "buttons": [{
+            "title": "Jeux vidéo",
+            "description": "Tous mes projets dans le développement de jeux vidéo."
+        }, {
+            "title": "Web",
+            "description": "Tous mes projets de création de site internet."
+        }, {
+            "title": "C / C++",
+            "description": "Mes algorithmes et programmes en C / C++."
+        }]
+    },
+    "contact": {
+        "title": "Contact",
+        "description": "Contactez-moi pour toutes demandes.",
+        "texts": [
+            "Nom",
+            "Email",
+            "Objet",
+            "Message"
+        ],
+        "buttons": [{
+            "title": "Contacter",
+            "description": "Envoyez-moi vos demandes."
+        }]
+    },
+    "system": {
+        "title": "System",
+        "description": "Paramètrages du système et mentions importantes.",
+        "texts": [],
+        "buttons": [{
+            "title": "Language",
+            "description": "Changer la langue du site."
+        }, {
+            "title": "Mode",
+            "description": "Changer le mode sombre / clair du site."
+        }, {
+            "title": "Attributions",
+            "description": "Attributions aux différentes images et références du site."
+        }, {
+            "title": "NieR:Automata",
+            "description": "Mon inspiration de Nier."
+        }, {
+            "title": "Mentions légales",
+            "description": "Mentions légales et obligatoires du site."
+        }]
+    }
+}

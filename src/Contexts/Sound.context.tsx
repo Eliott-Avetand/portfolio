@@ -1,9 +1,13 @@
-import { FC, ReactElement, ReactNode, createContext, useContext, useEffect, useRef, useState } from 'react';
-import hover from '../../assets/sounds/hover.ogg';
-import select from '../../assets/sounds/select.ogg';
-import openMenu from '../../assets/sounds/Menu.ogg';
+import { FC, ReactElement, ReactNode, createContext, useEffect, useRef, useState } from 'react';
+import hover from '../assets/sounds/hover.ogg';
+import select from '../assets/sounds/select.ogg';
+import openMenu from '../assets/sounds/Menu.ogg';
 
-interface SoundManagerContextType {
+interface SoundProps {
+    children: ReactNode;
+}
+
+export interface SoundContextType {
     playSound: (type: string) => void;
     toggleSound: () => void;
     toggleMusic: () => void;
@@ -11,13 +15,9 @@ interface SoundManagerContextType {
     canPlayMusic: () => boolean;
 }
 
-interface SoundManagerProps {
-    children: ReactNode;
-}
+export const SoundContext = createContext<SoundContextType | undefined>(undefined);
 
-const SoundManagerContext = createContext<SoundManagerContextType | undefined>(undefined);
-
-const SoundManager: FC<SoundManagerProps> = ({ children }) => {
+const SoundManager: FC<SoundProps> = ({ children }) => {
     const [audioElements, setAudioElements] = useState<ReactElement[]>([]);
     const [isSoundActive, setIsSoundActive] = useState(true);
     const [isMusicActive, setIsMusicActive] = useState(true)
@@ -64,21 +64,13 @@ const SoundManager: FC<SoundManagerProps> = ({ children }) => {
     }, [])
 
     return (
-        <SoundManagerContext.Provider value={{ playSound, canPlayMusic, canPlaySound, toggleMusic, toggleSound }}>
+        <SoundContext.Provider value={{ playSound, canPlayMusic, canPlaySound, toggleMusic, toggleSound }}>
             <div id="soundsArray">
                 {audioElements}
             </div>
             {children}
-        </SoundManagerContext.Provider>
+        </SoundContext.Provider>
     )
 } 
-
-export const useSoundManager = (): SoundManagerContextType => {
-    const context = useContext(SoundManagerContext);
-
-    if (!context)
-        throw new Error('useSoundManager must be a provider.');
-    return context;
-}
 
 export default SoundManager;

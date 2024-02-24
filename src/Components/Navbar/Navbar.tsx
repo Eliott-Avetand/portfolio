@@ -1,15 +1,23 @@
-import { useEffect } from 'react';
+import { Dispatch, MouseEvent, SetStateAction, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMusic, faVolumeLow } from '@fortawesome/free-solid-svg-icons';
 import Separator from '../Separator/separator';
 import styles from './Navbar.module.scss';
+import styleBtn from '../Button/Button.module.scss';
 import hoverEffect from '../HoverEffect/HoverBtn.module.scss';
-import { useSoundManager } from '../Sounds/SoundManager';
+import { useLanguage, useSoundManager } from '../../Contexts/useContext';
 
-const Navbar = () => {
-    const { toggleMusic, toggleSound ,canPlayMusic, canPlaySound, playSound } = useSoundManager();
+interface navbarProps {
+    setFooterText: Dispatch<SetStateAction<string>>,
+}
+
+const Navbar = ({ setFooterText }: navbarProps) => {
+    const { playSound } = useSoundManager();
+    const { dictionary } = useLanguage();
     const location = useLocation();
+
+    const onSelect = () => {
+        playSound("select");
+    }
 
     const removeActiveClass = () => {
         const active = document.querySelector(`.${styles.active}`);
@@ -23,23 +31,27 @@ const Navbar = () => {
         element.classList.remove(hoverEffect.hoverBtn);
     }
 
-    const changeMusic = () => {
-        toggleMusic();
-    }
+    const handleHover = (e: MouseEvent<HTMLAnchorElement>, pageName: string) => {
+        const currentSelected = document.querySelector(`.${hoverEffect.selectedBtn}`);
+        const target = e.target as HTMLDivElement;
 
-    const changeSound = () => {
-        toggleSound();
+        if (currentSelected !== target) {
+            playSound("hover");
+            setFooterText(dictionary[pageName].description);
+        }
+        if (currentSelected)
+            currentSelected.classList.remove(hoverEffect.selectedBtn, styleBtn.selectedBtn);
+        target.classList.add(hoverEffect.selectedBtn);
     }
 
     useEffect(() => {
-        const items = document.querySelectorAll(`.${styles.item}`);
+        const items = document.querySelectorAll<HTMLLinkElement>(`.${styles.item}`);
         
         removeActiveClass();
-        items.forEach(link => {
+        items.forEach((link: HTMLLinkElement) => {
             if (link.href.includes(location.pathname)) { addActiveClass(link); }
         });
     }, [location])
-    
 
     return (
         <div className={styles.navbar}>
@@ -47,28 +59,24 @@ const Navbar = () => {
             <div className={styles.items}>
                 <Link
                     className={`${styles.item} ${hoverEffect.hoverBtn}`}
-                    onMouseOver={() => playSound("hover")}
-                    onClick={() => playSound('select')}
+                    onMouseOver={(e) => handleHover(e, "home")}
+                    onClick={() => onSelect()}
                     to='/home'>Accueil</Link>
                 <Link
                     className={`${styles.item} ${hoverEffect.hoverBtn}`}
-                    onMouseOver={() => playSound("hover")}
-                    onClick={() => playSound('select')}
+                    onMouseOver={(e) => handleHover(e, "projects")}
+                    onClick={() => onSelect()}
                     to='/projects'>Projets</Link>
                 <Link
                     className={`${styles.item} ${hoverEffect.hoverBtn}`}
-                    onMouseOver={() => playSound("hover")}
-                    onClick={() => playSound('select')}
+                    onMouseOver={(e) => handleHover(e, "contact")}
+                    onClick={() => onSelect()}
                     to='/contact'>Contact</Link>
                 <Link
                     className={`${styles.item} ${hoverEffect.hoverBtn}`}
-                    onMouseOver={() => playSound("hover")}
-                    onClick={() => playSound('select')}
+                    onMouseOver={(e) => handleHover(e, "system")}
+                    onClick={() => onSelect()}
                     to='/system'>Système</Link>
-            </div>
-            <div className={styles.options}>
-                <span className={!canPlayMusic() ? styles.off : ""} onClick={changeMusic}><FontAwesomeIcon icon={faMusic} /></span>
-                <span className={!canPlaySound() ? styles.off : ""} onClick={changeSound}><FontAwesomeIcon icon={faVolumeLow} /></span>
             </div>
         </div>
     );

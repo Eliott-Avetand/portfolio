@@ -25,7 +25,8 @@
             background: t("text2");
         }
     }
-    &:hover, &.selected {
+    &:hover, &:focus, &.selectedBtn {
+        outline: none;
         @include themed {
             color: t("text1") !important;
         }

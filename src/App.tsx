@@ -1,68 +1,66 @@
 import { useContext, useEffect, useState } from 'react';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { customRoutes } from './Routes';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import ThemeContext from './Theme/ThemeContext.tsx';
 import Navbar from './Components/Navbar/Navbar';
 import styles from './App.module.scss';
 import Landing from './Views/Landing/Landing.tsx';
-import Loading from './Views/Loading/Loading.tsx';
+import Footer from './Components/Footer/Footer.tsx';
+import LanguageProvider from './Contexts/Language.context.tsx';
+import { useLanguage } from './Contexts/useContext';
+
+// Import the routes
+import Home from './Views/Home/Home.tsx';
+import Projects from './Views/Projects/Projects.tsx';
+import Contact from './Views/Contact/Contact.tsx';
+import System from './Views/System/System.tsx';
+import PrivateRoute from './Components/Routes/RouteGuard.tsx';
 
 function App() {
     const location = useLocation();
-    const navigate = useNavigate();
     const { isDark } = useContext(ThemeContext);
-    const [visited, setVisited] = useState(localStorage.getItem('visited') !== null)
-    const [hasInteracted, setHasInteracted] = useState<boolean>(false)
+    const { dictionary } = useLanguage();
+
+    const [hasInteracted, setHasInteracted] = useState<boolean>(false);
+    const [pageName, setPageName] = useState<string>("");
+    const [footerText, setFooterText] = useState<string>("");
 
     const isInMainMenu = () => {
         return location.pathname === '/' || !hasInteracted;
     }
 
-    const handleKeys = (event: KeyboardEvent) => {
-        console.log(event);
-        
-    }
-
-    const routes = customRoutes.map((route, index) => {
-        const Component = route.component;
-
-        return (
-            <Route
-                key={index}
-                path={route.path}
-                element={<Component />}
-            />
-        )
-    });
-
     useEffect(() => {
-        if (!visited)
-            navigate('/');
-    }, [visited, navigate])
+        let page = location.pathname.split("/")[1];
+        page = page === "" ? "home" : page;
 
-    useEffect(() => {
-        if (!hasInteracted)
-            navigate('/');
-        else
-            navigate('/home');
-    }, [hasInteracted])
-    
- 
+        setPageName(page);
+        setFooterText(dictionary[page].description);
+    }, [dictionary, location.pathname]);
+
     return (
-        <div className={`${styles.app} ${isDark ? 'theme--dark' : 'theme--light'} ${!isInMainMenu() ? styles.inApp : ""}`} onKeyDown={handleKeys}>
-            {
-                !visited
-                ? <Loading setVisited={setVisited} />
-                : isInMainMenu()
-                    ? <Landing setHasInteracted={setHasInteracted} />
-                    : <>
-                        <Navbar />
-                        <Routes>
-                            {routes}
-                        </Routes>
-                    </>
-            }
-        </div>
+        <LanguageProvider>
+            <div className={`${isDark ? 'theme--dark' : 'theme--light'} ${styles.app}  ${!isInMainMenu() ? styles.inApp : ""}`}>
+                {!isInMainMenu() ? <>
+                    <Navbar setFooterText={setFooterText} /> : <></>
+                    <h1 className={styles.title}>{dictionary[pageName].title}<i></i></h1>
+                </> : <></>}
+                <Routes>
+                    <Route path='/' element={<Landing setHasInteracted={setHasInteracted} />} />
+                    <Route path="/home" element={<PrivateRoute hasInteracted={hasInteracted} />}>
+                        <Route path="/home" element={<Home setFooterText={setFooterText} />} />
+                    </Route>
+                    <Route path="/projects" element={<PrivateRoute hasInteracted={hasInteracted} />}>
+                        <Route path="/projects" element={<Projects setFooterText={setFooterText} />} />
+                    </Route>
+                    <Route path="/contact" element={<PrivateRoute hasInteracted={hasInteracted} />}>
+                        <Route path="/contact" element={<Contact setFooterText={setFooterText} />} />
+                    </Route>
+                    <Route path="/system" element={<PrivateRoute hasInteracted={hasInteracted} />}>
+                        <Route path="/system" element={<System setFooterText={setFooterText} />} />
+                    </Route>
+                </Routes>
+                {!isInMainMenu() ? <Footer text={footerText} keys={[]} /> : <></>}
+            </div>
+        </LanguageProvider>
     );
 }
 

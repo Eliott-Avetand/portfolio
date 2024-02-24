@@ -1,31 +1,38 @@
 import { Dispatch, ReactElement, SetStateAction, createElement, useEffect, useState } from 'react';
 import styles from './Loading.module.scss';
-import text from "./texts.json";
 import Typewriter from 'typewriter-effect';
 
+// Texts' and language import
+import TextFR from '../../Locales/FR/Loading.json';
+import TextEN from '../../Locales/EN/Loading.json';
+import { useLanguage } from '../../Contexts/useContext';
+
 interface props {
-    setVisited: Dispatch<SetStateAction<boolean>>;
+    setVisited: Dispatch<SetStateAction<boolean>>,
 }
 
 const Loading = ({ setVisited }: props) => {
+    const { userLanguage } = useLanguage();
     const [arrayTypeWriter, setArrayTypeWriter] = useState<ReactElement[]>([]);
     const [numberOfElement, setNumberOfElement] = useState(0);
 
+    const texts = userLanguage === 'fr' ? TextFR : TextEN;
+
     useEffect(() => {
-        if (numberOfElement == text.length) {
+        if (numberOfElement == texts.texts.length) {
             document.querySelector(`#fadeout`)?.classList.add(styles.fadeout)
             localStorage.setItem('visited', 'true');
             localStorage.setItem('firstVisit', 'true');
             setTimeout(() => setVisited(true), 2000);
         }
-    }, [numberOfElement, setVisited]);
+    }, [numberOfElement, setVisited, texts]);
 
     return (
         <div className={styles.loading}>
             <div id="fadeout"></div>
             <div className={styles.title}>
-                <h1>Chargement</h1>
-                <i>- Initialization du système
+                <h1>{texts.title}</h1>
+                <i>- {texts.description}
                     <Typewriter onInit={(typewriter) => 
                         typewriter.typeString("...")
                         .pauseFor(0)
@@ -38,17 +45,17 @@ const Loading = ({ setVisited }: props) => {
                 {...arrayTypeWriter}
                 <Typewriter
                     onInit={(typewriter) => {
-                        typewriter.typeString(text[numberOfElement])
+                        typewriter.typeString(texts.texts[numberOfElement])
                         .callFunction(() => {
-                            setArrayTypeWriter([...arrayTypeWriter, createElement("p", {}, text[numberOfElement])]);
-                            if (numberOfElement < text.length)
+                            setArrayTypeWriter([...arrayTypeWriter, createElement("p", {}, texts.texts[numberOfElement])]);
+                            if (numberOfElement < texts.texts.length)
                                 setNumberOfElement(numberOfElement + 1);
                         }).deleteAll()
                         .start();
                     }}
                     options={{
                         cursor: "",
-                        strings: text,
+                        strings: texts.texts,
                         delay: Math.random() * (20 - 2) + 2,
                     }}
                 />

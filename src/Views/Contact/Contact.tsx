@@ -1,34 +1,33 @@
 import Separator from '../../Components/Separator/separator';
 import styles from './Contact.module.scss';
-import hoverEffect from '../../Components/HoverEffect/HoverBtn.module.scss';
-import Footer from '../../Components/Footer/Footer';
 import MainInfo from '../../Components/BoxInfos/MainInfos/MainInfo';
-import { useSoundManager } from '../../Components/Sounds/SoundManager';
+import { useLanguage } from '../../Contexts/useContext';
+import { pageProps } from '../../Interfaces/PagesProps.interface';
+import Button from '../../Components/Button/Button';
 
-const Contact = () => {
-    const { playSound } = useSoundManager();
+interface contactProps extends pageProps {}
+
+const Contact = ({ setFooterText }: contactProps) => {
+    const { dictionary } = useLanguage();
 
     return (
         <div className={styles.contact}>
-            <h1>CONTACT</h1>
-            <div className={styles.content}>
-                <div className={styles.main}>
-                    <Separator />
-                    <div className={styles.form}>
-                        <input type='text' placeholder='Nom' />
-                        <input type='email' placeholder='Email' />
-                        <input type='text' placeholder='Objet' />
-                        <textarea rows={5} cols={50} placeholder="Message" />
-                        <button
-                            className={`${styles.submit} ${hoverEffect.hoverBtn}`}
-                            onMouseEnter={() => playSound("hover")}
-                            onClick={() => playSound("select")}
-                        >Contacter</button>
-                    </div>
+            <div className={styles.main}>
+                <Separator />
+                <div className={styles.form}>
+                    <input type='text' placeholder={dictionary["contact"].texts[0]} />
+                    <input type='email' placeholder={dictionary["contact"].texts[1]} />
+                    <input type='text' placeholder={dictionary["contact"].texts[2]} />
+                    <textarea rows={5} cols={50} placeholder={dictionary["contact"].texts[3]} />
+                    <Button
+                        btnName={dictionary["contact"].buttons[0].title}
+                        btnDescription={dictionary["contact"].buttons[0].description}
+                        setFooterText={setFooterText}
+                        callback={() => {}}
+                    />
                 </div>
-                <MainInfo />
             </div>
-            <Footer text="N'hésitez pas à me contacter pour toutes demandes !" keys={["Echap", "Entrée"]} />
+            <MainInfo />
         </div>
     );
 }
