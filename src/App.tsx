@@ -40,7 +40,7 @@ function App() {
         <LanguageProvider>
             <div className={`${isDark ? 'theme--dark' : 'theme--light'} ${styles.app}  ${!isInMainMenu() ? styles.inApp : ""}`}>
                 {!isInMainMenu() ? <>
-                    <Navbar setFooterText={setFooterText} /> : <></>
+                    <Navbar setFooterText={setFooterText} />
                     <h1 className={styles.title}>{dictionary[pageName].title}<i></i></h1>
                 </> : <></>}
                 <Routes>

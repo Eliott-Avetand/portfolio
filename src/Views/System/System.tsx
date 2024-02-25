@@ -14,16 +14,18 @@ const System = ({ setFooterText }: systemProps) => {
         <div className={styles.system}>
             <div className={styles.menu}>
                 <Separator />
-                <div className={styles.items}>
-                    {dictionary["system"].buttons.map((button, index) => (
-                        <Button
-                            callback={() => userLanguageChange(userLanguage === "fr" ? "en" : "fr")}
-                            key={index}
-                            btnName={button.title}
-                            btnDescription={button.description}
-                            setFooterText={setFooterText}
-                        />
-                    ))}
+                <div className={styles.barWrapper}>
+                    <div className={styles.items}>
+                        {dictionary["system"].buttons.map((button, index) => (
+                            <Button
+                                callback={() => userLanguageChange(userLanguage === "fr" ? "en" : "fr")}
+                                key={index}
+                                btnName={button.title}
+                                btnDescription={button.description}
+                                setFooterText={setFooterText}
+                            />
+                            ))}
+                    </div>
                 </div>
             </div>
             <Scrollable title="Mentions légales" />

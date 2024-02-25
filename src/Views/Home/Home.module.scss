@@ -1,10 +1,8 @@
 @import "../../Theme/theme";
 
 .home {
-    flex-grow: 1;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
     .main {
         width: 40%;
         display: flex;
