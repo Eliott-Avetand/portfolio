@@ -1,5 +1,4 @@
 import Button from '../../Components/Button/Button';
-import Separator from '../../Components/Separator/separator';
 import styles from './Projects.module.scss';
 import MainInfo from '../../Components/BoxInfos/MainInfos/MainInfo';
 import { pageProps } from '../../Interfaces/PagesProps.interface';
@@ -17,28 +16,25 @@ const Projects = ({ setFooterText }: projectsProps) => {
 
     return (
         <div className={styles.projects}>
-            <div className={styles.zone1}>
-                <Separator />
-                <div className={styles.menu}>
-                    <Button
-                        btnName={dictionary["projects"].buttons[0].title}
-                        btnDescription={dictionary["projects"].buttons[0].description}
-                        setFooterText={setFooterText}
-                        callback={() => {}}
-                    />
-                    <Button
-                        btnName={dictionary["projects"].buttons[1].title}
-                        btnDescription={dictionary["projects"].buttons[1].description}
-                        setFooterText={setFooterText}
-                        callback={() => {}}
-                    />
-                    <Button
-                        btnName={dictionary["projects"].buttons[2].title}
-                        btnDescription={dictionary["projects"].buttons[2].description}
-                        setFooterText={setFooterText}
-                        callback={() => {}}
-                    />
-                </div>
+            <div className={styles.menu}>
+                <Button
+                    btnName={dictionary["projects"].buttons[0].title}
+                    btnDescription={dictionary["projects"].buttons[0].description}
+                    setFooterText={setFooterText}
+                    callback={() => {}}
+                />
+                <Button
+                    btnName={dictionary["projects"].buttons[1].title}
+                    btnDescription={dictionary["projects"].buttons[1].description}
+                    setFooterText={setFooterText}
+                    callback={() => {}}
+                />
+                <Button
+                    btnName={dictionary["projects"].buttons[2].title}
+                    btnDescription={dictionary["projects"].buttons[2].description}
+                    setFooterText={setFooterText}
+                    callback={() => {}}
+                />
             </div>
             {/* <div className={styles.zone2} id="Game">
                 <Separator />

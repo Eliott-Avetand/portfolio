@@ -7,10 +7,14 @@
         ],
         "buttons": [{
             "title": "Information",
-            "description": "View legal information about the site."
+            "description": "View legal information about the site.",
+            "callback": "",
+            "buttons": []
         }, {
             "title": "All projects",
-            "description": "View the list of important projects completed."
+            "description": "View the list of important projects completed.",
+            "callback": "",
+            "buttons": []
         }]
     },
     "projects": {
@@ -19,19 +23,26 @@
         "texts": [],
         "buttons": [{
             "title": "Video Games",
-            "description": "All my projects in video game development."
+            "description": "All my projects in video game development.",
+            "callback": "",
+            "buttons": []
         }, {
             "title": "Web",
-            "description": "All my website creation projects."
+            "description": "All my website creation projects.",
+            "callback": "",
+            "buttons": []
         }, {
             "title": "C/C++",
-            "description": "My algorithms and programs in C/C++."
+            "description": "My algorithms and programs in C/C++.",
+            "callback": "",
+            "buttons": []
         }]
     },
     "contact": {
         "title": "Contact",
         "description": "Contact me for any inquiries.",
         "texts": [
+            "Access Point",
             "Name",
             "Email",
             "Subject",
@@ -39,7 +50,9 @@
         ],
         "buttons": [{
             "title": "Contact",
-            "description": "Send me your inquiries."
+            "description": "Send me your inquiries.",
+            "callback": "",
+            "buttons": []
         }]
     },
     "system": {
@@ -48,19 +61,49 @@
         "texts": [],
         "buttons": [{
             "title": "Language",
-            "description": "Change the site language."
+            "description": "Change the site language.",
+            "callback": "languageCallback",
+            "buttons": [{
+                "title": "Français",
+                "description": "Change language to french.",
+                "callback": "",
+                "buttons": []
+            }, {
+                "title": "English",
+                "description": "Change language to english.",
+                "callback": "",
+                "buttons": []
+            }]
         }, {
             "title": "Mode",
-            "description": "Toggle site dark/light mode."
+            "description": "Toggle site dark/light mode.",
+            "callback": "modeCallback",
+            "buttons": [{
+                "title": "Light",
+                "description": "Change to light mode.",
+                "callback": "",
+                "buttons": []
+            }, {
+                "title": "Dark",
+                "description": "Change to dark mode.",
+                "callback": "",
+                "buttons": []
+            }]
         }, {
             "title": "Attributions",
-            "description": "Attributions for various site images and references."
+            "description": "Attributions for various site images and references.",
+            "callback": "",
+            "buttons": []
         }, {
             "title": "NieR:Automata",
-            "description": "My inspiration from Nier."
+            "description": "My inspiration from Nier.",
+            "callback": "",
+            "buttons": []
         }, {
             "title": "Legal Mentions",
-            "description": "Legal and mandatory notices of the site."
+            "description": "Legal and mandatory notices of the site.",
+            "callback": "",
+            "buttons": []
         }]
     }
 }

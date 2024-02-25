@@ -1,39 +1,36 @@
-@import "../../Theme/theme";
+@use "../../Theme/abstracts" as *;
 
 .navbar {
     position: relative;
     width: 100%;
     padding: 10px 0;
     display: flex;
-    .items {
-        display: flex;
-        .item {
-            text-decoration: none;
-            user-select: none;
-            margin: 0 20px;
-            padding: .1em 1em;
-            font-size: 1.5em;
-            text-transform: uppercase;
+    .item {
+        text-decoration: none;
+        user-select: none;
+        margin: 0 20px;
+        padding: .1rem 1rem;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        @include themed {
+            color: t("primary");
+            background: t("secondary");
+        }
+        &:is(:link, :active, :visited).active {
+            position: relative;
             @include themed {
-                background: t("text1");
-                color: t("text2");
+                color: t("secondary");
+                background: t("primary");
             }
-            &:is(:link, :active, :visited).active {
-                position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                height: 10px;
+                width: 100%;
                 @include themed {
-                    background: t("text2");
-                    color: t("text1");
-                }
-                &::after {
-                    content: "";
-                    position: absolute;
-                    bottom: -10px;
-                    left: 0;
-                    @include themed {
-                        background: t("text2");
-                    }
-                    height: 10px;
-                    width: 100%;
+                    background: t("primary");
                 }
             }
         }

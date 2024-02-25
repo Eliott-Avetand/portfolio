@@ -1,19 +1,35 @@
-@import "../../Theme/theme";
+@use "../../Theme/abstracts" as *;
 
 .home {
     display: flex;
     justify-content: space-between;
-    .main {
+    flex-grow: 1;
+    margin-bottom: 20px;
+    .menu {
+        position: relative;
         width: 40%;
-        display: flex;
         height: fit-content;
-        .content {
-            & > p {
-                text-align: justify;
-                margin-bottom: 20px;
-                @include themed {
-                    color: t('text2');
-                }
+        padding: 10px 20px;
+        margin-left: 20px;
+        box-sizing: border-box;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -1.5rem;
+            bottom: 0;
+            height: 100%;
+            width: 0.3rem;
+            @include themed {
+                border: solid t("secondary");
+                border-width: 0 0.2rem 0 0.7rem;
+            }
+        }
+        & > p {
+            text-align: justify;
+            margin-bottom: 20px;
+            @include themed {
+                color: t('primary');
             }
         }
     }

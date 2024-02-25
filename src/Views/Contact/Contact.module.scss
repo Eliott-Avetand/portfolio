@@ -1,47 +1,45 @@
-@import "../../Theme/theme";
+@use "../../Theme/abstracts" as *;
 
 .contact {
     display: flex;
     justify-content: space-between;
+    flex-grow: 1;
     @include themed {
-        color: t('text1');
+        color: t('primary');
     }
-    .main {
-        width: 30%;
-        display: flex;
+    .form {
         position: relative;
+        width: 40%;
         height: fit-content;
-        .form {
+        padding: 1rem;
+        padding-top: 0.5rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        @include themed {
+            border: 1px solid t("secondary");
+        }
+        legend {
+            padding: 0 .5rem;
+        }
+        & > p {
+            margin-bottom: 1rem;
             display: flex;
             flex-direction: column;
-            width: 100%;
-            min-width: 100%;
-            max-height: 50vh;
-            & > * {
-                width: 100%;
-                font-size: 1em;
-                padding: 5px 1em;
-                margin-bottom: 10px;
-                background: #D2CDB4;
-                box-shadow: 4px 4px 2px 0 #9D9989;
-                border: none;
-                letter-spacing: .1em;
-                outline: none;
-                box-sizing: border-box;
-                @include themed {
-                    color: t("text2");
-                }
-                &::placeholder {
-                    opacity: .7;
-                }
+            label {
+                margin: .5rem 0;
             }
-            .submit {
-                cursor: pointer;
-                box-shadow: none;
-                margin: 0;
+            input, textarea {
+                max-width: 1000px;
+                max-height: 150px;
+                padding: .5rem;
+                font-size: 1rem;
+                border: none;
+                outline: none;
+                letter-spacing: inherit;
+                font-family: inherit;
                 @include themed {
-                    background: t('text1');
-                    color: t('text2');
+                    background: t("figure");
                 }
             }
         }

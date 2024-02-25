@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styles from './Landing.module.scss';
-import { useLanguage, useSoundManager } from '../../Contexts/useContext';
+import { useLanguage, useSound } from '../../Contexts/useContext';
 
 // Import Text
 import TextFR from '../../Locales/FR/Landing.json';
@@ -14,7 +14,7 @@ interface props {
 
 const Landing = ({ setHasInteracted }: props) => {
     const navigate = useNavigate();
-    const { playSound } = useSoundManager();
+    const { playSound } = useSound();
     const { userLanguage } = useLanguage();
     const [visited, setVisited] = useState<boolean>(localStorage.getItem('visited') !== null);
 

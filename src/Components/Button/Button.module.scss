@@ -1,21 +1,22 @@
-@import "../../Theme/theme";
+@use "../../Theme/abstracts" as *;
 
 .button {
-    @include themed {
-        background: t("text1");
-        color: t("text2");
-    }
+    cursor: pointer;
     padding: 5px;
     display: flex;
     align-items: center;
-    cursor: pointer;
+    align-content: center;
     &:not(&:first-child) {
         margin-top: 10px;
     }
-    &:hover, &.selectedBtn {
+    @include themed {
+        color: t("primary");
+        background: t("secondary");
+    }
+    &:hover, &.focusBtn, &.selectedBtn {
         .indicator {
             @include themed {
-                background: t("text1");
+                background: t("secondary");
             }
         }
         .cursor {
@@ -36,7 +37,7 @@
         margin-right: .5em;
         margin-left: .3em;
         @include themed {
-            background: t("text2");
+            background: t("primary");
         }
     }
     p {

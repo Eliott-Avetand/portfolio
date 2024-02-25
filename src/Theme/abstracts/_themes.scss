@@ -1,0 +1,41 @@
+@use 'sass:map';
+
+$themes: (
+    light: (
+        primary: #454138,
+        secondary: #BAB5A1,
+        figure: #dcd8c0,
+        figure-shadow: #9A9786,
+        background-image: url("./assets/Img/lightmode_wallpaper.png"),
+        background-color: #d1cdb7
+    ),
+    dark: (
+        primary: #BAB5A1,
+        secondary: #454138,
+        figure: #12141f,
+        figure-shadow: #dcd8c0,
+        background-image: url("./assets/Img/darkmode_wallpaper.png"),
+        background-color: #929080
+    )
+);
+
+@mixin themed {
+    @each $theme, $map in $themes {
+        :global(.theme--#{$theme}) & {
+            $theme-map: () !global;
+
+            @each $key, $submap in $map {
+                $value: map.get($map, $key);
+                $theme-map: map.merge($theme-map, (
+                    $key: $value,
+                )) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function t($key) {
+    @return map-get($theme-map, $key);
+}

@@ -1,42 +1,21 @@
-@import "../../../Theme/theme";
+@use "../../../Theme/abstracts" as *;
 
 .scrollable {
-    margin-left: 50px;
-    width: 100%;
-    background: #D2CDB4;
-    overflow: hidden;
+    height: 100%;
+
     @include themed {
-        color: t("text2");
-    }
-    .title {
-        font-size: 1em;
-        padding: .3em .3em;
-        font-weight: 400;
-        display: flex;
-        align-items: center;
         overflow: hidden;
-        .indicator {
-            width: 1em;
-            height: 1em;
-            margin-right: .5em;
-            margin-left: .3em;
-            @include themed {
-                background: t("text1");
-            }
-        }
-        @include themed {
-            background: t("text2");
-            color: t("text1");
-        }
+        color: t("primary");
+        background: t("figure");
     }
     .scrollbarWrapper {
         height: 100%;
         padding: 0 5px;
     }
     .content {
-        padding: 0 1em;
         display: flex;
         flex-direction: column;
+        padding: 0 1rem;
         overflow-y: auto;
         max-height: 100%;
         &::-webkit-scrollbar {
@@ -45,14 +24,14 @@
         }
         &::-webkit-scrollbar-thumb {
             @include themed {
-                background: t("text2");
+                background: t("primary");
             }
         }
-    }
-    .section {
-        box-sizing: border-box;
-        margin: 10px 0;
-        padding-bottom: 10px;
-        border-bottom: 2px solid #BAB5A1;
+        .section {
+            box-sizing: border-box;
+            margin: 10px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #BAB5A1;
+        }
     }
 }

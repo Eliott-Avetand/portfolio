@@ -1,27 +1,31 @@
-@import "../../../Theme/theme";
+@use "../../../Theme/abstracts" as *;
 
 .mainInfo {
     width: 20%;
-    background: #D2CDB4;
-    height: fit-content;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
     @include themed {
-        color: t("text2");
+        color: t("primary");
+        background: t("figure");
     }
     .title {
-        font-size: 1em;
-        padding: 2px 1em;
+        font-size: 1rem;
+        padding: 5px 1rem;
         font-weight: 400;
         @include themed {
-            background: t("text2");
-            color: t("text1");
+            background: t("primary");
+            color: t("secondary");
         }
     }
     .section {
         padding: 5px 1em;
-        border-bottom: 2px solid #BAB5A1;
         margin: 5px 0;
         display: flex;
         flex-direction: column;
+        @include themed {
+            border-bottom: 2px solid t("secondary");
+        }
         .line {
             display: flex;
             justify-content: space-between;
@@ -31,6 +35,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        align-content: center;
+        align-items: center;
+        flex-grow: 1;
         padding: 50px 0;
     }
 }

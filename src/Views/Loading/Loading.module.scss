@@ -1,4 +1,4 @@
-@import "../../Theme/theme";
+@use "../../Theme/abstracts" as *;
 
 .loading {
     background-image: url("../../assets/Img/loading_wallpaper.png");

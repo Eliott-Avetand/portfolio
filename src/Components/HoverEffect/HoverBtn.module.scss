@@ -1,4 +1,4 @@
-@import "../../Theme/theme";
+@use "../../Theme/abstracts" as *;
 
 .hoverBtn {
     position: relative;
@@ -22,13 +22,13 @@
         width: 0;
         z-index: -1;
         @include themed {
-            background: t("text2");
+            background: t("primary");
         }
     }
-    &:hover, &:focus, &.selectedBtn {
+    &:hover, &:focus, &.focusBtn, &.selectedBtn {
         outline: none;
         @include themed {
-            color: t("text1") !important;
+            color: t("secondary") !important;
         }
         &::after {
             width: 100%;
@@ -38,7 +38,7 @@
             top: -.2em;
             bottom: -.2em;
             @include themed {
-                border: solid t("text2");
+                border: solid t("primary");
                 border-width: .1em 0;
             } 
         }

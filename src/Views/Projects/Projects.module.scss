@@ -1,18 +1,31 @@
-@import "../../Theme/theme";
+@use "../../Theme/abstracts" as *;
 
 .projects {
     display: flex;
     justify-content: space-between;
+    flex-grow: 1;
     @include themed {
         color: t('text1');
     }
-    .zone1, .zone2 {
-        width: 30%;
-        display: flex;
+    .menu {
         position: relative;
+        width: 30%;
         height: fit-content;
-        .menu {
-            width: 100%;
+        padding: 10px 20px;
+        margin-left: 20px;
+        box-sizing: border-box;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -1.5rem;
+            bottom: 0;
+            height: 100%;
+            width: 0.3rem;
+            @include themed {
+                border: solid t("secondary");
+                border-width: 0 0.2rem 0 0.7rem;
+            }
         }
     }
     .zone2 {

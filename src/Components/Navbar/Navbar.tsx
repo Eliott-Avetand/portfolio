@@ -1,17 +1,16 @@
 import { Dispatch, MouseEvent, SetStateAction, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Separator from '../Separator/separator';
 import styles from './Navbar.module.scss';
 import styleBtn from '../Button/Button.module.scss';
 import hoverEffect from '../HoverEffect/HoverBtn.module.scss';
-import { useLanguage, useSoundManager } from '../../Contexts/useContext';
+import { useLanguage, useSound } from '../../Contexts/useContext';
 
 interface navbarProps {
     setFooterText: Dispatch<SetStateAction<string>>,
 }
 
 const Navbar = ({ setFooterText }: navbarProps) => {
-    const { playSound } = useSoundManager();
+    const { playSound } = useSound();
     const { dictionary } = useLanguage();
     const location = useLocation();
 
@@ -32,7 +31,7 @@ const Navbar = ({ setFooterText }: navbarProps) => {
     }
 
     const handleHover = (e: MouseEvent<HTMLAnchorElement>, pageName: string) => {
-        const currentSelected = document.querySelector(`.${hoverEffect.selectedBtn}`);
+        const currentSelected = document.querySelector(`.${hoverEffect.focusBtn}`);
         const target = e.target as HTMLDivElement;
 
         if (currentSelected !== target) {
@@ -40,8 +39,8 @@ const Navbar = ({ setFooterText }: navbarProps) => {
             setFooterText(dictionary[pageName].description);
         }
         if (currentSelected)
-            currentSelected.classList.remove(hoverEffect.selectedBtn, styleBtn.selectedBtn);
-        target.classList.add(hoverEffect.selectedBtn);
+            currentSelected.classList.remove(hoverEffect.focusBtn, styleBtn.focusBtn);
+        target.classList.add(hoverEffect.focusBtn);
     }
 
     useEffect(() => {
@@ -55,29 +54,26 @@ const Navbar = ({ setFooterText }: navbarProps) => {
 
     return (
         <div className={styles.navbar}>
-            <Separator />
-            <div className={styles.items}>
-                <Link
-                    className={`${styles.item} ${hoverEffect.hoverBtn}`}
-                    onMouseOver={(e) => handleHover(e, "home")}
-                    onClick={() => onSelect()}
-                    to='/home'>Accueil</Link>
-                <Link
-                    className={`${styles.item} ${hoverEffect.hoverBtn}`}
-                    onMouseOver={(e) => handleHover(e, "projects")}
-                    onClick={() => onSelect()}
-                    to='/projects'>Projets</Link>
-                <Link
-                    className={`${styles.item} ${hoverEffect.hoverBtn}`}
-                    onMouseOver={(e) => handleHover(e, "contact")}
-                    onClick={() => onSelect()}
-                    to='/contact'>Contact</Link>
-                <Link
-                    className={`${styles.item} ${hoverEffect.hoverBtn}`}
-                    onMouseOver={(e) => handleHover(e, "system")}
-                    onClick={() => onSelect()}
-                    to='/system'>Système</Link>
-            </div>
+            <Link
+                className={`${styles.item} ${hoverEffect.hoverBtn}`}
+                onMouseOver={(e) => handleHover(e, "home")}
+                onClick={() => onSelect()}
+                to='/home'>{dictionary["home"].title}</Link>
+            <Link
+                className={`${styles.item} ${hoverEffect.hoverBtn}`}
+                onMouseOver={(e) => handleHover(e, "projects")}
+                onClick={() => onSelect()}
+                to='/projects'>{dictionary["projects"].title}</Link>
+            <Link
+                className={`${styles.item} ${hoverEffect.hoverBtn}`}
+                onMouseOver={(e) => handleHover(e, "contact")}
+                onClick={() => onSelect()}
+                to='/contact'>{dictionary["contact"].title}</Link>
+            <Link
+                className={`${styles.item} ${hoverEffect.hoverBtn}`}
+                onMouseOver={(e) => handleHover(e, "system")}
+                onClick={() => onSelect()}
+                to='/system'>{dictionary["system"].title}</Link>
         </div>
     );
 }

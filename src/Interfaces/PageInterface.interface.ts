@@ -1,11 +1,15 @@
+export interface Button {
+    title: string,
+    description: string,
+    callback: string,
+    buttons: Array<Button>
+}
+
 export interface Page {
     title: string,
     description: string,
     texts: string[],
-    buttons: Array<{
-        title: string,
-        description: string,
-    }>
+    buttons: Array<Button>
 }
 
 export interface Pages {

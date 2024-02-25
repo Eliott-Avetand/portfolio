@@ -7,10 +7,14 @@
         ],
         "buttons": [{
             "title": "Informations",
-            "description": "Consulter les informations légales du site."
+            "description": "Consulter les informations légales du site.",
+            "callback": "",
+            "buttons": []
         }, {
             "title": "Tous les projets",
-            "description": "Consulter la liste des projets importants réalisés."
+            "description": "Consulter la liste des projets importants réalisés.",
+            "callback": "",
+            "buttons": []
         }]
     },
     "projects": {
@@ -19,19 +23,26 @@
         "texts": [],
         "buttons": [{
             "title": "Jeux vidéo",
-            "description": "Tous mes projets dans le développement de jeux vidéo."
+            "description": "Tous mes projets dans le développement de jeux vidéo.",
+            "callback": "",
+            "buttons": []
         }, {
             "title": "Web",
-            "description": "Tous mes projets de création de site internet."
+            "description": "Tous mes projets de création de site internet.",
+            "callback": "",
+            "buttons": []
         }, {
             "title": "C / C++",
-            "description": "Mes algorithmes et programmes en C / C++."
+            "description": "Mes algorithmes et programmes en C / C++.",
+            "callback": "",
+            "buttons": []
         }]
     },
     "contact": {
         "title": "Contact",
         "description": "Contactez-moi pour toutes demandes.",
         "texts": [
+            "Point d'accés",
             "Nom",
             "Email",
             "Objet",
@@ -39,28 +50,60 @@
         ],
         "buttons": [{
             "title": "Contacter",
-            "description": "Envoyez-moi vos demandes."
+            "description": "Envoyez-moi vos demandes.",
+            "callback": "",
+            "buttons": []
         }]
     },
     "system": {
-        "title": "System",
+        "title": "Système",
         "description": "Paramètrages du système et mentions importantes.",
         "texts": [],
         "buttons": [{
             "title": "Language",
-            "description": "Changer la langue du site."
+            "description": "Changer la langue du site.",
+            "callback": "languageCallback",
+            "buttons": [{
+                "title": "Français",
+                "description": "Changer la langue en français.",
+                "callback": "",
+                "buttons": []
+            }, {
+                "title": "English",
+                "description": "Changer la langue en anglais.",
+                "callback": "",
+                "buttons": []
+            }]
         }, {
             "title": "Mode",
-            "description": "Changer le mode sombre / clair du site."
+            "description": "Changer le mode sombre / clair du site.",
+            "callback": "modeCallback",
+            "buttons": [{
+                "title": "Clair",
+                "description": "Changer en mode clair.",
+                "callback": "",
+                "buttons": []
+            }, {
+                "title": "Sombre",
+                "description": "Changer en mode sombre.",
+                "callback": "",
+                "buttons": []
+            }]
         }, {
             "title": "Attributions",
-            "description": "Attributions aux différentes images et références du site."
+            "description": "Attributions aux différentes images et références du site.",
+            "callback": "",
+            "buttons": []
         }, {
             "title": "NieR:Automata",
-            "description": "Mon inspiration de Nier."
+            "description": "Mon inspiration de Nier.",
+            "callback": "",
+            "buttons": []
         }, {
             "title": "Mentions légales",
-            "description": "Mentions légales et obligatoires du site."
+            "description": "Mentions légales et obligatoires du site.",
+            "callback": "",
+            "buttons": []
         }]
     }
 }
