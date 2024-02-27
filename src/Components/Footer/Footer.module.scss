@@ -3,10 +3,13 @@
 .footer {
     position: relative;
     margin-top: auto;
-    padding: 20px 0;
+    padding: max(5px, 2vh) 0;
     @include themed {
         background: t("figure");
         box-shadow: 4px 4px 2px 0 t("figure-shadow");
+    }
+    @media screen and (max-width: 700px) {
+        display: none;
     }
     &::before {
         content: '';
@@ -22,15 +25,16 @@
         }
     }
     p {
-        margin-left: 50px;
+        margin-left: max(30px, 3vw);
+        font-size: var(--font-size-400);
         @include themed {
             color: t("primary");
         }
     }
     .indicator {
         position: absolute;
-        width: 1em;
-        height: 1em;
+        width: var(--font-size-300);
+        height: var(--font-size-300);
         bottom: 5px;
         right: 5px;
         @include themed {

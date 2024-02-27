@@ -1,21 +1,29 @@
 @use "../../../Theme/abstracts" as *;
 
 .mainInfo {
-    width: 20%;
-    height: 75%;
+    flex-shrink: 0;
+    width: max(20%, 220px);
+    height: fit-content;
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: 700px) {
+        width: 100%;
+        margin-top: 20px;
+    }
     @include themed {
         color: t("primary");
         background: t("figure");
     }
     .title {
-        font-size: 1rem;
         padding: 5px 1rem;
         font-weight: 400;
+        font-size: var(--font-size-400);
         @include themed {
             background: t("primary");
             color: t("secondary");
+        }
+        @media screen and (max-width: 1330px) {
+            font-size: var(--font-size-300);
         }
     }
     .section {
@@ -29,6 +37,12 @@
         .line {
             display: flex;
             justify-content: space-between;
+            p {
+                font-size: var(--font-size-400);
+                @media screen and (max-width: 1330px) {
+                    font-size: var(--font-size-300);
+                }
+            }
         }
     }
     .lastSection {
@@ -37,7 +51,11 @@
         justify-content: center;
         align-content: center;
         align-items: center;
-        flex-grow: 1;
-        padding: 50px 0;
+        padding: max(50px, 2vh) 0;
+        @media screen and (max-width: 1330px) {
+            p {
+                font-size: var(--font-size-300);
+            }
+        }
     }
 }

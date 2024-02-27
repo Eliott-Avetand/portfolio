@@ -48,6 +48,7 @@ const Button = ({ btnName, btnDescription, setFooterText, callback }: buttonProp
 
     return (
         <div
+            title='azeaze'
             className={`${styles.button} ${hoverEffect.hoverBtn}`}
             onMouseOver={handleHover}
             onClick={handleSelect}

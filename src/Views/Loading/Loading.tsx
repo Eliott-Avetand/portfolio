@@ -32,7 +32,7 @@ const Loading = ({ setVisited }: props) => {
             <div id="fadeout"></div>
             <div className={styles.title}>
                 <h1>{texts.title}</h1>
-                <i>- {texts.description}
+                <i> - {texts.description}
                     <Typewriter onInit={(typewriter) => 
                         typewriter.typeString("...")
                         .pauseFor(0)

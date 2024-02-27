@@ -1,38 +1,51 @@
 @use "../../Theme/abstracts" as *;
 
 .loading {
+    position: relative;
     background-image: url("../../assets/Img/loading_wallpaper.png");
     background-repeat: no-repeat;
     background-position: center center;
+    background-attachment: fixed;
     background-size: cover;
-    width: 100%;
-    height: 100%;
+    overflow: auto;
     box-sizing: border-box;
-    padding: 50px;
-    overflow: hidden;
-    position: relative;
+    height: 100%;
+    padding: var(--font-size-800);
     @include themed {
-        color: t('text1');
+        color: t('secondary');
+    }
+    @media screen and (max-width: 550px) {
+        background-image: url("../../assets/Img/loading_wallpaper_mobile.png");
     }
     .title {
         text-transform: uppercase;
+        margin-bottom: 20px;
         h1 {
             font-weight: 300;
-            font-size: 4em;
+            font-size: var(--font-size-900);
             display: inline;
         }
         i {
-            font-size: 1.5em;
+            font-size: var(--font-size-500);
             font-style: normal;
             & > div {
                 display: inline;
             }
         }
+        @media screen and (max-width: 720px) {
+            display: flex;
+            flex-direction: column;
+        }
     }
     .content {
-        margin-left: 50px;
-        font-size: 1.5em;
-        width: fit-content;
+        margin-left: var(--font-size-600);
+        & > * {
+            font-size: var(--font-size-500);
+            margin: .1rem 0;
+            @media screen and (max-width: 720px) {
+                font-size: var(--font-size-400);
+            }
+        }
     }
     .fadeout {
         position: absolute;

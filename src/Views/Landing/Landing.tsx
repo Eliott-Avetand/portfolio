@@ -17,17 +17,20 @@ const Landing = ({ setHasInteracted }: props) => {
     const { playSound } = useSound();
     const { userLanguage } = useLanguage();
     const [visited, setVisited] = useState<boolean>(localStorage.getItem('visited') !== null);
-
+    const [clicked, setClicked] = useState(false);
     const texts = userLanguage === "fr" ? TextFR : TextEN;
 
     const interacted = () => {
-        document.querySelector("#fade")?.classList.remove(styles.fadein);
-        document.querySelector("#fade")?.classList.add(styles.fadeout);
-        playSound("openMenu");
-        setTimeout(() => {
-            setHasInteracted(true);
-            navigate("/home");
-        }, 2000);
+        if (!clicked) {
+            setClicked(true);
+            document.querySelector("#fade")?.classList.remove(styles.fadein);
+            document.querySelector("#fade")?.classList.add(styles.fadeout);
+            playSound("openMenu");
+            setTimeout(() => {
+                setHasInteracted(true);
+                navigate("/home");
+            }, 2000);
+        }
     }
 
     useEffect(() => {
@@ -45,8 +48,8 @@ const Landing = ({ setHasInteracted }: props) => {
             <div className={styles.content}>
                 <h1>ElioTT:Avetand</h1>
                 <p>{texts.title}</p>
-                <i>{texts.rights}</i>
             </div>
+            <i>{texts.rights}</i>
         </div>
         : <Loading setVisited={setVisited} />
     )

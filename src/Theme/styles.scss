@@ -4,19 +4,27 @@
     font-family: Helvetica, Roboto, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
-    font-size: 16px;
     letter-spacing: .1em;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
 
+    --font-size-200:  clamp(0.4444rem, 0.6791rem + -0.1956vi, 0.64rem);
+    --font-size-300:  clamp(0.6667rem, 0.8267rem + -0.1333vi, 0.8rem);
+    --font-size-400: clamp(1rem, 1rem + 0vi, 1rem);
+    --font-size-500: clamp(1.25rem, 1.2rem + 0.25vi, 1.5rem);
+    --font-size-600: clamp(1.5625rem, 1.425rem + 0.6875vi, 2.25rem);
+    --font-size-700: clamp(1.9531rem, 1.6688rem + 1.4219vi, 3.375rem);
+    --font-size-800: clamp(2.4414rem, 1.9172rem + 2.6211vi, 5.0625rem);
+    --font-size-900: clamp(3.0518rem, 2.1434rem + 4.542vi, 7.5938rem);
+}
 *, body {
     margin: 0;
     padding: 0;
     letter-spacing: .1em;
+    font-size: var(--font-size-400);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -4,6 +4,7 @@ import styles from './Navbar.module.scss';
 import styleBtn from '../Button/Button.module.scss';
 import hoverEffect from '../HoverEffect/HoverBtn.module.scss';
 import { useLanguage, useSound } from '../../Contexts/useContext';
+import Yorha from '../../assets/Img/yorha_logo.png';
 
 interface navbarProps {
     setFooterText: Dispatch<SetStateAction<string>>,
@@ -16,6 +17,12 @@ const Navbar = ({ setFooterText }: navbarProps) => {
 
     const onSelect = () => {
         playSound("select");
+    }
+
+    const toggleMenu = () => {
+        const menu = document.querySelector<HTMLDivElement>(`.${styles.items}`);
+        
+        if (menu) menu.classList.toggle(styles.deployed);
     }
 
     const removeActiveClass = () => {
@@ -54,26 +61,29 @@ const Navbar = ({ setFooterText }: navbarProps) => {
 
     return (
         <div className={styles.navbar}>
-            <Link
-                className={`${styles.item} ${hoverEffect.hoverBtn}`}
-                onMouseOver={(e) => handleHover(e, "home")}
-                onClick={() => onSelect()}
-                to='/home'>{dictionary["home"].title}</Link>
-            <Link
-                className={`${styles.item} ${hoverEffect.hoverBtn}`}
-                onMouseOver={(e) => handleHover(e, "projects")}
-                onClick={() => onSelect()}
-                to='/projects'>{dictionary["projects"].title}</Link>
-            <Link
-                className={`${styles.item} ${hoverEffect.hoverBtn}`}
-                onMouseOver={(e) => handleHover(e, "contact")}
-                onClick={() => onSelect()}
-                to='/contact'>{dictionary["contact"].title}</Link>
-            <Link
-                className={`${styles.item} ${hoverEffect.hoverBtn}`}
-                onMouseOver={(e) => handleHover(e, "system")}
-                onClick={() => onSelect()}
-                to='/system'>{dictionary["system"].title}</Link>
+            <img src={Yorha} alt="Yorha" width={50} onClick={toggleMenu} />
+            <div className={styles.items}>
+                <Link
+                    className={`${styles.item} ${hoverEffect.hoverBtn}`}
+                    onMouseOver={(e) => handleHover(e, "home")}
+                    onClick={() => onSelect()}
+                    to='/home'>{dictionary["home"].title}</Link>
+                <Link
+                    className={`${styles.item} ${hoverEffect.hoverBtn}`}
+                    onMouseOver={(e) => handleHover(e, "projects")}
+                    onClick={() => onSelect()}
+                    to='/projects'>{dictionary["projects"].title}</Link>
+                <Link
+                    className={`${styles.item} ${hoverEffect.hoverBtn}`}
+                    onMouseOver={(e) => handleHover(e, "contact")}
+                    onClick={() => onSelect()}
+                    to='/contact'>{dictionary["contact"].title}</Link>
+                <Link
+                    className={`${styles.item} ${hoverEffect.hoverBtn}`}
+                    onMouseOver={(e) => handleHover(e, "system")}
+                    onClick={() => onSelect()}
+                    to='/system'>{dictionary["system"].title}</Link>
+            </div>
         </div>
     );
 }
