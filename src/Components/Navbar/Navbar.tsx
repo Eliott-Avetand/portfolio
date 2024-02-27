@@ -1,18 +1,15 @@
-import { Dispatch, MouseEvent, SetStateAction, useEffect } from 'react';
+import { MouseEvent, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Navbar.module.scss';
 import styleBtn from '../Button/Button.module.scss';
 import hoverEffect from '../HoverEffect/HoverBtn.module.scss';
-import { useLanguage, useSound } from '../../Contexts/useContext';
+import { useFooter, useLanguage, useSound } from '../../Contexts/useContext';
 import Yorha from '../../assets/Img/yorha_logo.png';
 
-interface navbarProps {
-    setFooterText: Dispatch<SetStateAction<string>>,
-}
-
-const Navbar = ({ setFooterText }: navbarProps) => {
+const Navbar = () => {
     const { playSound } = useSound();
     const { dictionary } = useLanguage();
+    const { setFooterText } = useFooter();
     const location = useLocation();
 
     const onSelect = () => {

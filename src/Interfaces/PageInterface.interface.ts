@@ -5,10 +5,15 @@ export interface Button {
     buttons: Array<Button>
 }
 
+export interface Texts {
+    title: string,
+    texts: string[]
+}
+
 export interface Page {
     title: string,
     description: string,
-    texts: string[],
+    texts: {[text: string]: Texts},
     buttons: Array<Button>
 }
 

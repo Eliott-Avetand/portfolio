@@ -1,19 +1,19 @@
-import { Dispatch, MouseEventHandler, SetStateAction, useState } from 'react';
+import { MouseEventHandler, useState } from 'react';
 import styles from './Button.module.scss';
 import hoverEffect from '../HoverEffect/HoverBtn.module.scss';
-import { useSound } from '../../Contexts/useContext';
+import { useFooter, useSound } from '../../Contexts/useContext';
 import cursor from '../../assets/Img/cursor_normal.png';
 import cursorLock from '../../assets/Img/cursor_normal_lock.png';
 
 interface buttonProps {
     btnName: string,
     btnDescription: string,
-    setFooterText: Dispatch<SetStateAction<string>>,
     callback: (btnName: string) => void
 }
 
-const Button = ({ btnName, btnDescription, setFooterText, callback }: buttonProps) => {
+const Button = ({ btnName, btnDescription, callback }: buttonProps) => {
     const { playSound } = useSound();
+    const { setFooterText } = useFooter();
     const [cursorNormal, setCursorNormal] = useState(cursor);
 
     const handleSelect: MouseEventHandler<HTMLDivElement> = (e) => {

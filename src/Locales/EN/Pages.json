@@ -2,9 +2,12 @@
     "home": {
         "title": "Home",
         "description": "Portfolio home page.",
-        "texts": [
-            "Hi! My name is Eliott Avetand, I'm a creative developer passionate about design. I work as a full stack web developer but I have years of experience in a variety of languages like C/C++, Python, Unreal, etc., allowing me to work in any field, I adapt!"
-        ],
+        "texts": {
+            "description": {
+                "title": "Description",
+                "texts": ["Hi! My name is Eliott Avetand, I'm a creative developer passionate about design. I work as a full stack web developer but I have years of experience in a variety of languages like C/C++, Python, Unreal, etc., allowing me to work in any field, I adapt!"]
+            }
+        },
         "buttons": [{
             "title": "Information",
             "description": "View legal information about the site.",
@@ -20,7 +23,7 @@
     "projects": {
         "title": "Projects",
         "description": "All important projects completed.",
-        "texts": [],
+        "texts": {},
         "buttons": [{
             "title": "Video Games",
             "description": "All my projects in video game development.",
@@ -41,13 +44,28 @@
     "contact": {
         "title": "Contact",
         "description": "Contact me for any inquiries.",
-        "texts": [
-            "Access Point",
-            "Name",
-            "Email",
-            "Subject",
-            "Message"
-        ],
+        "texts": {
+            "formName": {
+                "title": "Access point",
+                "texts": []
+            },
+            "name": {
+                "title": "Name",
+                "texts": []
+            },
+            "email": {
+                "title": "Email",
+                "texts": []
+            },
+            "object": {
+                "title": "Subject",
+                "texts": []
+            },
+            "message": {
+                "title": "Message",
+                "texts": []
+            }
+        },
         "buttons": [{
             "title": "Contact",
             "description": "Send me your inquiries.",
@@ -58,9 +76,22 @@
     "system": {
         "title": "System",
         "description": "System settings and important notices.",
-        "texts": [],
+        "texts": {
+            "attributions": {
+                "title": "Attributions",
+                "texts": ["Lorem"]
+            },
+            "nier": {
+                "title": "NieR:Automata",
+                "texts": ["Lorem"]
+            },
+            "legalNotice": {
+                "title": "Legal Notice",
+                "texts": ["Lorem"]
+            }
+        },
         "buttons": [{
-            "title": "Language",
+            "title": "Languages",
             "description": "Change the site language.",
             "callback": "languageCallback",
             "buttons": [{
@@ -75,7 +106,7 @@
                 "buttons": []
             }]
         }, {
-            "title": "Mode",
+            "title": "Modes",
             "description": "Toggle site dark/light mode.",
             "callback": "modeCallback",
             "buttons": [{
@@ -92,16 +123,32 @@
         }, {
             "title": "Attributions",
             "description": "Attributions for various site images and references.",
-            "callback": "",
+            "callback": "attributionsCallback",
             "buttons": []
         }, {
             "title": "NieR:Automata",
             "description": "My inspiration from Nier.",
-            "callback": "",
+            "callback": "nierCallback",
             "buttons": []
         }, {
             "title": "Legal Mentions",
             "description": "Legal and mandatory notices of the site.",
+            "callback": "legalNoticeCallback",
+            "buttons": []
+        }]
+    },
+    "notfound": {
+        "title": "Page not found",
+        "description": "Woops, it seems the page you're looking for in not there.",
+        "texts": {
+            "notfound": {
+                "title": "Page not found",
+                "texts": ["Woops, it seems the page you're looking for in not there."]
+            }
+        },
+        "buttons": [{
+            "title": "Back",
+            "description": "Go back home",
             "callback": "",
             "buttons": []
         }]

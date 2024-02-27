@@ -1,4 +1,4 @@
-@use 'Theme/abstracts' as *;
+@use '../../Theme/abstracts' as *;
 
 .app {
     width: 100%;
@@ -6,9 +6,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-}
-
-.inApp {
     @include themed {
         background-color: t("background");
         background-image: t("background-image");

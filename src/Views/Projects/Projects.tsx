@@ -1,13 +1,17 @@
 import Button from '../../Components/Button/Button';
 import styles from './Projects.module.scss';
 import MainInfo from '../../Components/BoxInfos/MainInfos/MainInfo';
-import { pageProps } from '../../Interfaces/PagesProps.interface';
-import { useLanguage } from '../../Contexts/useContext';
+import { useFooter, useLanguage } from '../../Contexts/useContext';
+import { useEffect } from 'react';
 
-interface projectsProps extends pageProps {}
-
-const Projects = ({ setFooterText }: projectsProps) => {
+const Projects = () => {
     const { dictionary } = useLanguage();
+    const { setFooterText } = useFooter();
+
+    useEffect(() => {
+        setFooterText(dictionary["projects"].description);
+    }, [setFooterText, dictionary]);
+
     // const onClickButton = (btnName: string) => {
     //     const zone = document.querySelector(`#${btnName}`);
 
@@ -20,19 +24,16 @@ const Projects = ({ setFooterText }: projectsProps) => {
                 <Button
                     btnName={dictionary["projects"].buttons[0].title}
                     btnDescription={dictionary["projects"].buttons[0].description}
-                    setFooterText={setFooterText}
                     callback={() => {}}
                 />
                 <Button
                     btnName={dictionary["projects"].buttons[1].title}
                     btnDescription={dictionary["projects"].buttons[1].description}
-                    setFooterText={setFooterText}
                     callback={() => {}}
                 />
                 <Button
                     btnName={dictionary["projects"].buttons[2].title}
                     btnDescription={dictionary["projects"].buttons[2].description}
-                    setFooterText={setFooterText}
                     callback={() => {}}
                 />
             </div>

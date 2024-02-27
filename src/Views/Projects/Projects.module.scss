@@ -7,6 +7,10 @@
     @include themed {
         color: t('text1');
     }
+    @media screen and (max-width: 700px) {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
     .menu {
         position: relative;
         width: 30%;
@@ -14,6 +18,10 @@
         padding: 10px 20px;
         margin-left: 20px;
         box-sizing: border-box;
+        @media screen and (max-width: 700px) {
+            width: 100%;
+            margin: 0;
+        }
         &::before {
             content: '';
             position: absolute;

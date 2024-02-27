@@ -8,33 +8,24 @@
     .menu {
         position: relative;
         flex-shrink: 0;
-        width: 20%;
+        width: 25%;
         display: flex;
         padding: 10px 0;
         padding-right: 10px;
-        margin-left: 20px;
         @include themed {
             background: t("figure");
         }
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -1.5rem;
-            bottom: 0;
-            height: 100%;
-            width: 0.3rem;
-            @include themed {
-                border: solid t("secondary");
-                border-width: 0 0.2rem 0 0.7rem;
-            }
-        }
         .items {
-            padding: 10px 0;
             padding-right: 10px;
             width: 100%;
             box-sizing: border-box;
             overflow-y: auto;
+            a {
+                text-decoration: double;
+                & > * {
+                    margin: 10px 0;
+                }
+            }
             @include themed {
                 border-top: 2px solid t("secondary");
                 border-bottom: 2px solid t("secondary");
@@ -48,31 +39,6 @@
                 @include themed {
                     background: t("primary");
                 }
-            }
-        }
-    }
-    .zone2 {
-        align-self: flex-end;
-        margin-left: 50px;
-    }
-    .languages, .modes {
-        display: none;
-        position: relative;
-        align-self: flex-start;
-        flex-direction: column;
-        width: 20%;
-        padding-left: 20px;
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -1.5rem;
-            bottom: 0;
-            height: 100%;
-            width: 0.3rem;
-            @include themed {
-                border: solid t("secondary");
-                border-width: 0 0.2rem 0 0.7rem;
             }
         }
     }

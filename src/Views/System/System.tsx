@@ -1,56 +1,53 @@
 import styles from './System.module.scss';
 import Button from '../../Components/Button/Button';
-import { pageProps } from '../../Interfaces/PagesProps.interface';
-import { useLanguage, useTheme } from '../../Contexts/useContext';
+import { useFooter, useLanguage } from '../../Contexts/useContext';
 import { callbacks } from './Callbacks/SystemCallbacks';
-import Scrollable from '../../Components/BoxInfos/Scrollable/Scrollable';
+import { Link, Route, Routes } from 'react-router-dom';
+import Languages from './Views/Languages/Languages';
+import Modes from './Views/Modes/Modes';
+import { useEffect } from 'react';
 
-interface systemProps extends pageProps {}
+const System = () => {
+    const { dictionary } = useLanguage();
+    const { setFooterText } = useFooter();
 
-const System = ({ setFooterText }: systemProps) => {
-    const { dictionary, userLanguageChange } = useLanguage();
-    const { setTheme } = useTheme();
-
-    const changeLanguage = (btnName: string) => {
-        if (btnName === "English")
-            userLanguageChange("en");
-        else
-            userLanguageChange("fr");
-    }
-
-    const changeMode = (btnName: string) => {
-        if (btnName === "Light" || btnName === "Clair")
-            setTheme("light");
-        else
-            setTheme("dark");
-    }
+    useEffect(() => {
+        setFooterText(dictionary["system"].description);
+    }, [setFooterText, dictionary]);
 
     return (
         <div className={styles.system}>
             <div className={styles.menu}>
                 <div className={styles.items}>
                     {dictionary["system"].buttons.map((button, index) => (
-                        <Button
+                        <Link to={button.title.toLowerCase()} key={index}><Button
                             callback={callbacks[button.callback]}
-                            key={index}
                             btnName={button.title}
                             btnDescription={button.description}
-                            setFooterText={setFooterText}
-                        />
+                        /></Link>
                         ))}
                 </div>
             </div>
-            <div className={`${styles.zone2} ${styles.languages}`}>
-                {dictionary["system"].buttons.find(button => button.title === 'Language')?.buttons.map((button, index) => (
-                    <Button key={index} btnName={button.title} btnDescription={button.description} setFooterText={setFooterText} callback={changeLanguage} />
-                    ))}
-            </div>
-            <div className={`${styles.zone2} ${styles.modes}`}>
-                {dictionary["system"].buttons.find(button => button.title === 'Mode')?.buttons.map((button, index) => (
-                    <Button key={index} btnName={button.title} btnDescription={button.description} setFooterText={setFooterText} callback={changeMode} />
-                    ))}
-            </div>
-            <Scrollable title="Mentions légales" className={styles.zone2} />
+            <Routes>
+                <Route path="languages" element={<Languages />} />  
+                <Route path="modes" element={<Modes />} />
+            </Routes>
+
+            {/* <Scrollable
+                title={dictionary["system"].texts.legalNotice.title}
+                texts={dictionary["system"].texts.legalNotice.texts}
+                className={`${styles.zone2} legalNotice`}
+            />
+            <Scrollable
+                title={dictionary["system"].texts.nier.title}
+                texts={dictionary["system"].texts.nier.texts}
+                className={`${styles.zone2} nier`}
+            />
+            <Scrollable
+                title={dictionary["system"].texts.attributions.title}
+                texts={dictionary["system"].texts.attributions.texts}
+                className={`${styles.zone2} attributions`}
+            /> */}
         </div>
     );
 }

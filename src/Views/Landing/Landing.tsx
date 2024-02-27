@@ -5,7 +5,6 @@ import { useLanguage, useSound } from '../../Contexts/useContext';
 // Import Text
 import TextFR from '../../Locales/FR/Landing.json';
 import TextEN from '../../Locales/EN/Landing.json';
-import { useNavigate } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 
 interface props {
@@ -13,7 +12,6 @@ interface props {
 }
 
 const Landing = ({ setHasInteracted }: props) => {
-    const navigate = useNavigate();
     const { playSound } = useSound();
     const { userLanguage } = useLanguage();
     const [visited, setVisited] = useState<boolean>(localStorage.getItem('visited') !== null);
@@ -28,7 +26,6 @@ const Landing = ({ setHasInteracted }: props) => {
             playSound("openMenu");
             setTimeout(() => {
                 setHasInteracted(true);
-                navigate("/home");
             }, 2000);
         }
     }

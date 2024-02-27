@@ -2,9 +2,12 @@
     "home": {
         "title": "Accueil",
         "description": "Page d'accueil du portfolio.",
-        "texts": [
-            "Salut ! Je m'appelle Eliott Avetand, je suis un développeur créatif passioné par le design.J'interviens en tant que développeur web full stack mais j'ai quelques années d'expériences dans une multitude de language comme le C / C++, Python, Unreal, etc, qui me permettent de travailler dans tous les domaines, je m'adapte !"
-        ],
+        "texts": {
+            "description": {
+                "title": "Description",
+                "texts": ["Salut ! Je m'appelle Eliott Avetand, je suis un développeur créatif passioné par le design.J'interviens en tant que développeur web full stack mais j'ai quelques années d'expériences dans une multitude de language comme le C / C++, Python, Unreal, etc, qui me permettent de travailler dans tous les domaines, je m'adapte !"]
+            }
+        },
         "buttons": [{
             "title": "Informations",
             "description": "Consulter les informations légales du site.",
@@ -20,7 +23,7 @@
     "projects": {
         "title": "Projets",
         "description": "Tous les projets importants réalisés.",
-        "texts": [],
+        "texts": {},
         "buttons": [{
             "title": "Jeux vidéo",
             "description": "Tous mes projets dans le développement de jeux vidéo.",
@@ -41,13 +44,28 @@
     "contact": {
         "title": "Contact",
         "description": "Contactez-moi pour toutes demandes.",
-        "texts": [
-            "Point d'accés",
-            "Nom",
-            "Email",
-            "Objet",
-            "Message"
-        ],
+        "texts": {
+            "formName": {
+                "title": "Point d'accés",
+                "texts": []
+            },
+            "name": {
+                "title": "Nom",
+                "texts": []
+            },
+            "email": {
+                "title": "Email",
+                "texts": []
+            },
+            "object": {
+                "title": "Objet",
+                "texts": []
+            },
+            "message": {
+                "title": "Message",
+                "texts": []
+            }
+        },
         "buttons": [{
             "title": "Contacter",
             "description": "Envoyez-moi vos demandes.",
@@ -58,9 +76,22 @@
     "system": {
         "title": "Système",
         "description": "Paramètrages du système et mentions importantes.",
-        "texts": [],
+        "texts": {
+            "attributions": {
+                "title": "Attributions",
+                "texts": [""]
+            },
+            "nier": {
+                "title": "NieR:Automata",
+                "texts": ["Lorem"]
+            },
+            "legalNotice": {
+                "title": "Mentions légales",
+                "texts": ["Lorem", "test"]
+            }
+        },
         "buttons": [{
-            "title": "Language",
+            "title": "Languages",
             "description": "Changer la langue du site.",
             "callback": "languageCallback",
             "buttons": [{
@@ -75,7 +106,7 @@
                 "buttons": []
             }]
         }, {
-            "title": "Mode",
+            "title": "Modes",
             "description": "Changer le mode sombre / clair du site.",
             "callback": "modeCallback",
             "buttons": [{
@@ -92,16 +123,32 @@
         }, {
             "title": "Attributions",
             "description": "Attributions aux différentes images et références du site.",
-            "callback": "",
+            "callback": "attributionsCallback",
             "buttons": []
         }, {
             "title": "NieR:Automata",
             "description": "Mon inspiration de Nier.",
-            "callback": "",
+            "callback": "nierCallback",
             "buttons": []
         }, {
             "title": "Mentions légales",
             "description": "Mentions légales et obligatoires du site.",
+            "callback": "legalNoticeCallback",
+            "buttons": []
+        }]
+    },
+    "notfound": {
+        "title": "Page introuvable",
+        "description": "Oops, il semblerait que la page que vous cherchiez soit introuvable.",
+        "texts": {
+            "notfound": {
+                "title": "Page introuvable",
+                "texts": ["Oops, il semblerait que la page que vous cherchiez soit introuvable."]
+            }
+        },
+        "buttons": [{
+            "title": "Retour",
+            "description": "Retourner à la page d'accueil.",
             "callback": "",
             "buttons": []
         }]

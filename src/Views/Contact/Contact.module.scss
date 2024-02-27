@@ -3,9 +3,14 @@
 .contact {
     display: flex;
     justify-content: space-between;
-    flex-grow: 1;
     @include themed {
         color: t('primary');
+    }
+    @media screen and (max-width: 900px) {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
     }
     .form {
         position: relative;
@@ -18,6 +23,9 @@
         flex-direction: column;
         @include themed {
             border: 1px solid t("secondary");
+        }
+        @media screen and (max-width: 900px) {
+            width: 100%;
         }
         legend {
             padding: 0 .5rem;
@@ -33,13 +41,17 @@
                 max-width: 1000px;
                 max-height: 150px;
                 padding: .5rem;
-                font-size: 1rem;
+                box-sizing: border-box;
+                font-size: var(--font-size-400);
                 border: none;
                 outline: none;
                 letter-spacing: inherit;
                 font-family: inherit;
                 @include themed {
                     background: t("figure");
+                }
+                @media screen and (max-width: 900px) {
+                    width: 100%;
                 }
             }
         }

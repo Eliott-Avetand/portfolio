@@ -1,8 +1,10 @@
 @use "../../../Theme/abstracts" as *;
 
 .scrollable {
+    display: none;
+    flex-direction: column;
     height: 100%;
-
+    flex-grow: 1;
     @include themed {
         overflow: hidden;
         color: t("primary");
