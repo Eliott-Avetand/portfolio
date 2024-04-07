@@ -1,0 +1,13 @@
+{
+    "title": "Sound",
+    "footer": "Manage the application's sound.",
+    "buttons": [{
+        "title": "Disable sound",
+        "footer": "Turn off all sound effects in the application.",
+        "callback": ""
+    }, {
+        "title": "Disable music",
+        "footer": "Turn off the application's music.",
+        "callback": ""
+    }]
+}

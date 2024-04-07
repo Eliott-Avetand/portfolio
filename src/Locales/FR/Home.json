@@ -1,0 +1,14 @@
+{
+    "title": "Accueil",
+    "footer": "Page d'accueil du portfolio.",
+    "text": "Salut ! Je m'appelle Eliott Avetand, je suis un développeur créatif passioné par le design.J'interviens en tant que développeur web full stack mais j'ai quelques années d'expériences dans une multitude de language comme le C / C++, Python, Unreal, etc, qui me permettent de travailler dans tous les domaines, je m'adapte !",
+    "buttons": [{
+        "title": "Informations",
+        "footer": "Consulter les informations légales du site.",
+        "callback": "informationCallback"
+    }, {
+        "title": "Tous les projets",
+        "footer": "Consulter la liste des projets importants réalisés.",
+        "callback": "projectsCallback"
+    }]
+}

@@ -1,5 +1,5 @@
 import "./Theme/styles.scss";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 
 // Import the routes
@@ -18,12 +18,12 @@ function App() {
         !hasInteracted
         ? <Landing setHasInteracted={setHasInteracted} />
         : <Routes>
-            <Route path="/" element={<CustomRoute children={<Home />} />} />
-            <Route path="/home" element={<CustomRoute children={<Home />} />} />
-            <Route path="projects" element={<CustomRoute children={<Projects />} />} />
-            <Route path="contact" element={<CustomRoute children={<Contact />} />} />
-            <Route path="system/*" element={<CustomRoute children={<System />} />} />
-            <Route path="*" element={<CustomRoute children={<NotFound />} />} />
+            <Route path="/" element={<Navigate to='/home' />} />
+            <Route path="/home" element={<CustomRoute children={<Home />} pageName="home" />} />
+            <Route path="projects" element={<CustomRoute children={<Projects />} pageName="projects" />} />
+            <Route path="contact" element={<CustomRoute children={<Contact />} pageName="contact" />} />
+            <Route path="system/*" element={<CustomRoute children={<System />} pageName="system" />} />
+            <Route path="*" element={<CustomRoute children={<NotFound />} pageName="notFound" />} />
         </Routes>
     );
 }

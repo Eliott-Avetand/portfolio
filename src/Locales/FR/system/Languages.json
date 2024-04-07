@@ -1,0 +1,13 @@
+{
+    "title": "Langages",
+    "footer": "Changer la langue du site.",
+    "buttons": [{
+        "title": "Français",
+        "footer": "Changer la langue en français.",
+        "callback": "frenchCallback"
+    }, {
+        "title": "English",
+        "footer": "Changer la langue en anglais.",
+        "callback": "englishCallback"
+    }]
+}

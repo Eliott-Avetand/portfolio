@@ -1,0 +1,13 @@
+{
+    "title": "Modes",
+    "footer": "Changer le mode sombre / clair du site.",
+    "buttons": [{
+        "title": "Clair",
+        "footer": "Changer en mode clair.",
+        "callback": "lightThemeCallback"
+    }, {
+        "title": "Sombre",
+        "footer": "Changer en mode sombre.",
+        "callback": "darkThemeCallback"
+    }]
+}

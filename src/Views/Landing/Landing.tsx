@@ -3,8 +3,6 @@ import styles from './Landing.module.scss';
 import { useLanguage, useSound } from '../../Contexts/useContext';
 
 // Import Text
-import TextFR from '../../Locales/FR/Landing.json';
-import TextEN from '../../Locales/EN/Landing.json';
 import Loading from '../Loading/Loading';
 
 interface props {
@@ -13,10 +11,9 @@ interface props {
 
 const Landing = ({ setHasInteracted }: props) => {
     const { playSound } = useSound();
-    const { userLanguage } = useLanguage();
+    const { dictionary } = useLanguage();
     const [visited, setVisited] = useState<boolean>(localStorage.getItem('visited') !== null);
     const [clicked, setClicked] = useState(false);
-    const texts = userLanguage === "fr" ? TextFR : TextEN;
 
     const interacted = () => {
         if (!clicked) {
@@ -40,13 +37,14 @@ const Landing = ({ setHasInteracted }: props) => {
     return (
         visited
         ? <div className={styles.landing} onClick={interacted}>
-            <div id='fade'></div>
-            <div className={styles.wallpaper}></div>
-            <div className={styles.content}>
-                <h1>ElioTT:Avetand</h1>
-                <p>{texts.title}</p>
+            <div className={styles.fade} id='fade'>
+                <div className={styles.wallpaper}></div>
+                <div className={styles.content}>
+                    <h1>ElioTT:Avetand</h1>
+                    <p>{dictionary.landing.title}</p>
+                </div>
+                <i>{dictionary.landing.rights}</i>
             </div>
-            <i>{texts.rights}</i>
         </div>
         : <Loading setVisited={setVisited} />
     )

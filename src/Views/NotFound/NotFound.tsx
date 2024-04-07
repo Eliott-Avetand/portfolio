@@ -7,7 +7,7 @@ const NotFound = () => {
     const { dictionary } = useLanguage();
 
     useEffect(() => {
-        setFooterText(dictionary["notfound"].description);
+        setFooterText(dictionary.notFound.footer);
     }, [setFooterText, dictionary]);
 
     return (

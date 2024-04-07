@@ -23,32 +23,31 @@ const Button = ({ btnName, btnDescription, callback }: buttonProps) => {
         if (currentSelected !== target) {
             playSound('select');
             setCursorNormal(cursorLock);
+            if (currentSelected) {
+                currentSelected.classList.remove(hoverEffect.selectedBtn, styles.selectedBtn);
+            }
         }
-        if (currentSelected) {
-            currentSelected.classList.remove(hoverEffect.selectedBtn, styles.selectedBtn);
-        }
-        callback(btnName);
         target.classList.add(hoverEffect.selectedBtn, styles.selectedBtn);
+        callback(btnName);
     }
 
     const handleHover: MouseEventHandler<HTMLDivElement> = (e) => {
         const currentFocused = document.querySelector(`.${hoverEffect.focusBtn}`);
         const target = e.target as HTMLDivElement;
-
+        
         if (currentFocused !== target) {
             playSound("hover");
             setFooterText(btnDescription);
-        }
-        if (currentFocused) {
-            currentFocused.classList.remove(hoverEffect.focusBtn, styles.focusBtn);
-            setCursorNormal(cursor);
+            if (currentFocused) {
+                currentFocused.classList.remove(hoverEffect.focusBtn, styles.focusBtn);
+                setCursorNormal(cursor);
+            }
         }
         target.classList.add(hoverEffect.focusBtn, styles.focusBtn);
     }
 
     return (
         <div
-            title='azeaze'
             className={`${styles.button} ${hoverEffect.hoverBtn}`}
             onMouseOver={handleHover}
             onClick={handleSelect}

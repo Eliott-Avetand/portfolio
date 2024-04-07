@@ -1,0 +1,29 @@
+{
+    "title": "Système",
+    "footer": "Paramètrages du système et mentions importantes.",
+    "buttons": [{
+        "title": "Languages",
+        "footer": "Changer la langue du site.",
+        "callback": "languagesCallback"
+    }, {
+        "title": "Modes",
+        "footer": "Changer le mode sombre / clair du site.",
+        "callback": "modesCallback"
+    }, {
+        "title": "Son",
+        "footer": "Gérer le son de l'application.",
+        "callback": "soundCallback"
+    }, {
+        "title": "Attributions",
+        "footer": "Attributions aux différentes images et références du site.",
+        "callback": "attributionsCallback"
+    }, {
+        "title": "NieR Automata",
+        "footer": "Mon inspiration de Nier.",
+        "callback": "nierCallback"
+    }, {
+        "title": "Mentions légales",
+        "footer": "Mentions légales et obligatoires du site.",
+        "callback": "legalNoticeCallback"
+    }]
+}

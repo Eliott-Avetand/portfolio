@@ -1,18 +1,29 @@
+import { useEffect } from 'react';
 import styles from './System.module.scss';
 import Button from '../../Components/Button/Button';
 import { useFooter, useLanguage } from '../../Contexts/useContext';
-import { callbacks } from './Callbacks/SystemCallbacks';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Languages from './Views/Languages/Languages';
 import Modes from './Views/Modes/Modes';
-import { useEffect } from 'react';
+import TextPanel from './Views/TextPanel/TextPanel';
+import Sound from './Views/Sound/Sound';
 
 const System = () => {
+    const navigate = useNavigate();
     const { dictionary } = useLanguage();
     const { setFooterText } = useFooter();
 
+    const callbacks: { [fnName: string]: () => void } = {
+        languagesCallback: () => navigate("languages"),
+        modesCallback: () => navigate("modes"),
+        soundCallback: () => navigate("sound"),
+        attributionsCallback: () => navigate("attributions"),
+        nierCallback: () => navigate("nier"),
+        legalNoticeCallback: () => navigate("legalNotice")
+    }
+
     useEffect(() => {
-        setFooterText(dictionary["system"].description);
+        setFooterText(dictionary.system.footer);
     }, [setFooterText, dictionary]);
 
     return (
@@ -20,34 +31,23 @@ const System = () => {
             <div className={styles.menu}>
                 <div className={styles.items}>
                     {dictionary["system"].buttons.map((button, index) => (
-                        <Link to={button.title.toLowerCase()} key={index}><Button
-                            callback={callbacks[button.callback]}
+                        <Button
+                            key={index}
                             btnName={button.title}
-                            btnDescription={button.description}
-                        /></Link>
-                        ))}
+                            btnDescription={button.footer}
+                            callback={callbacks[button.callback]}
+                        />
+                    ))}
                 </div>
             </div>
             <Routes>
                 <Route path="languages" element={<Languages />} />  
                 <Route path="modes" element={<Modes />} />
+                <Route path="sound" element={<Sound />} />
+                <Route path="attributions" element={<TextPanel title={"Attributions"} text={"Lorem Ipsum"} />} />
+                <Route path="nier" element={<TextPanel title={"Nier:Automata"} text={"Lorem Ipsum"} />} />
+                <Route path="legalNotice" element={<TextPanel title={"Mentions légales"} text={"Lorem Ipsum"} />} />
             </Routes>
-
-            {/* <Scrollable
-                title={dictionary["system"].texts.legalNotice.title}
-                texts={dictionary["system"].texts.legalNotice.texts}
-                className={`${styles.zone2} legalNotice`}
-            />
-            <Scrollable
-                title={dictionary["system"].texts.nier.title}
-                texts={dictionary["system"].texts.nier.texts}
-                className={`${styles.zone2} nier`}
-            />
-            <Scrollable
-                title={dictionary["system"].texts.attributions.title}
-                texts={dictionary["system"].texts.attributions.texts}
-                className={`${styles.zone2} attributions`}
-            /> */}
         </div>
     );
 }

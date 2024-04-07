@@ -1,0 +1,17 @@
+{
+    "title": "Projects",
+    "footer": "All important projects completed.",
+    "buttons": [{
+        "title": "Video Games",
+        "footer": "All my projects in video game development.",
+        "callback": ""
+    }, {
+        "title": "Web",
+        "footer": "All my projects in website creation.",
+        "callback": ""
+    }, {
+        "title": "C / C++",
+        "footer": "My algorithms and programs in C / C++.",
+        "callback": ""
+    }]
+}

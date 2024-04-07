@@ -1,0 +1,60 @@
+@use "../../../../Theme/abstracts" as *;
+
+.sound {
+    position: relative;
+    display: flex;
+    margin-left: 50px;
+    align-self: flex-start;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 20px;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -1.5rem;
+        bottom: 0;
+        height: 100%;
+        width: 0.3rem;
+        @include themed {
+            border: solid t("secondary");
+            border-width: 0 0.2rem 0 0.7rem;
+        }
+    }
+    .sfx {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    .volume {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.soundBar {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    & > div {
+        margin: 0 5px;
+        @include themed {
+            background: t("primary");
+        }
+        &.volumeBar {
+            width: 4px;
+            height: 12px;
+        }
+        &.square {
+            height: 5px;
+            width: 5px;
+        }
+        &:hover {
+            width: 5px;
+            height: 15px;
+            cursor: pointer;
+        }
+    }
+}

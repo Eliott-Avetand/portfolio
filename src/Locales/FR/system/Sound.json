@@ -1,0 +1,13 @@
+{
+    "title": "Son",
+    "footer": "Gérer le son de l'application.",
+    "buttons": [{
+        "title": "Désactiver le son",
+        "footer": "Désactive tous les SFX de l'application.",
+        "callback": ""
+    }, {
+        "title": "Désactiver la musique",
+        "footer": "Désactive la musique de l'application",
+        "callback": ""
+    }]
+}

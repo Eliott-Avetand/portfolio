@@ -1,0 +1,29 @@
+{
+    "title": "Contact",
+    "footer": "Contact me for any inquiries.",
+    "form": {
+        "title": "Access Point",
+        "inputs": [{
+            "name": "Name",
+            "placeholder": "A2",
+            "type": "text"
+        }, {
+            "name": "Email",
+            "placeholder": "A2@YoRHa.sys",
+            "type": "email"
+        }, {
+            "name": "Subject",
+            "placeholder": "Mission",
+            "type": "text"
+        }, {
+            "name": "Message",
+            "placeholder": "...",
+            "type": "text"
+        }],
+        "submit": {
+            "title": "Send Message",
+            "footer": "Submit your inquiry.",
+            "callback": ""
+        }
+    }
+}

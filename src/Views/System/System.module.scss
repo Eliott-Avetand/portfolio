@@ -3,7 +3,7 @@
 .system {
     display: flex;
     flex-grow: 1;
-    overflow-y: auto;
+    overflow: auto;
     margin-bottom: 20px;
     .menu {
         position: relative;
@@ -20,11 +20,8 @@
             width: 100%;
             box-sizing: border-box;
             overflow-y: auto;
-            a {
-                text-decoration: double;
-                & > * {
-                    margin: 10px 0;
-                }
+            & > div {
+                margin: 10px 0;
             }
             @include themed {
                 border-top: 2px solid t("secondary");

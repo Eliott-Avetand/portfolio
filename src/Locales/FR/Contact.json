@@ -1,0 +1,29 @@
+{
+    "title": "Contact",
+    "footer": "Contactez-moi pour toutes demandes.",
+    "form": {
+        "title": "Point d'accés",
+        "inputs": [{
+            "name": "Nom",
+            "placeholder": "A2",
+            "type": "text"
+        }, {
+            "name": "Email",
+            "placeholder": "A2@YoRHa.sys",
+            "type": "email"
+        }, {
+            "name": "Objet",
+            "placeholder": "Mission",
+            "type": "text"
+        }, {
+            "name": "Message",
+            "placeholder": "...",
+            "type": "text"
+        }],
+        "submit": {
+            "title": "Contacter",
+            "footer": "Envoyez votre demande.",
+            "callback": ""
+        }
+    }
+}

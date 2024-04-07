@@ -1,0 +1,14 @@
+{
+    "title": "Home",
+    "footer": "Portfolio home page.",
+    "text": "Hi! My name is Eliott Avetand, I am a creative developer passionate about design. I work as a full stack web developer but I have several years of experience in a variety of languages such as C / C++, Python, Unreal, etc., which allows me to work in all areas. I adapt!",
+    "buttons": [{
+        "title": "Information",
+        "footer": "View the site's legal information.",
+        "callback": "informationCallback"
+    }, {
+        "title": "All projects",
+        "footer": "View the list of important projects completed.",
+        "callback": "projectsCallback"
+    }]
+}

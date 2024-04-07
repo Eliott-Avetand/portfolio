@@ -10,6 +10,7 @@
     overflow: auto;
     box-sizing: border-box;
     height: 100%;
+    min-height: 100vh;
     padding: var(--font-size-800);
     @include themed {
         color: t('secondary');
@@ -22,11 +23,11 @@
         margin-bottom: 20px;
         h1 {
             font-weight: 300;
-            font-size: var(--font-size-900);
+            font-size: var(--font-size-700);
             display: inline;
         }
         i {
-            font-size: var(--font-size-500);
+            font-size: var(--font-size-400);
             font-style: normal;
             & > div {
                 display: inline;
@@ -36,6 +37,9 @@
             display: flex;
             flex-direction: column;
         }
+    }
+    & div span {
+        font-size: var(--font-size-500);
     }
     .content {
         margin-left: var(--font-size-600);

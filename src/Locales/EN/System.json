@@ -1,0 +1,29 @@
+{
+    "title": "System",
+    "footer": "System settings and important notices.",
+    "buttons": [{
+        "title": "Languages",
+        "footer": "Change the site language.",
+        "callback": "languagesCallback"
+    }, {
+        "title": "Modes",
+        "footer": "Switch between dark and light modes.",
+        "callback": "modesCallback"
+    }, {
+        "title": "Sound",
+        "footer": "Manage the application's sound.",
+        "callback": "soundCallback"
+    }, {
+        "title": "Attributions",
+        "footer": "Attributions to different images and references on the site.",
+        "callback": "attributionsCallback"
+    }, {
+        "title": "NieR Automata",
+        "footer": "My inspiration from Nier.",
+        "callback": "nierCallback"
+    }, {
+        "title": "Legal Notice",
+        "footer": "Legal and mandatory notices of the site.",
+        "callback": "legalNoticeCallback"
+    }]
+}

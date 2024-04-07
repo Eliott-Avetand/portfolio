@@ -20,11 +20,17 @@
     --font-size-800: clamp(2.4414rem, 1.9172rem + 2.6211vi, 5.0625rem);
     --font-size-900: clamp(3.0518rem, 2.1434rem + 4.542vi, 7.5938rem);
 }
+
 *, body {
     margin: 0;
     padding: 0;
     letter-spacing: .1em;
     font-size: var(--font-size-400);
+}
+
+
+.animate__animated.animate__fadeInLeft {
+    --animate-duration: 1s;
 }
 
 @media (prefers-reduced-motion: reduce) {

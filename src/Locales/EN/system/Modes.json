@@ -1,0 +1,13 @@
+{
+    "title": "Modes",
+    "footer": "Switch between dark and light modes.",
+    "buttons": [{
+        "title": "Light",
+        "footer": "Switch to light mode.",
+        "callback": "lightThemeCallback"
+    }, {
+        "title": "Dark",
+        "footer": "Switch to dark mode.",
+        "callback": "darkThemeCallback"
+    }]
+}
